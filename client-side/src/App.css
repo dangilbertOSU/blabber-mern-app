@@ -1,0 +1,228 @@
+html, body { height: 100% }
+
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: white;
+}
+
+.Submissions {
+  padding-top: 30px;
+  grid-column-start: 1;
+  grid-column-end: 6;
+  grid-row-start: 6;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.Submissions_Post {
+  padding: 1rem;
+  margin-top: 2rem;
+  border: 1px solid lightgray;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.2s ease-out;
+  position: relative;
+  box-shadow: 7px 7px 14px -7px rgba(0,0,0,0.20);
+}
+
+.Submissions_Post.fade_in{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.Submissions_Post_Date{
+  color: gray;
+}
+
+.Submissions_Post:hover {
+  box-shadow: 9px 9px 20px rgba(0,0,0,0.10);
+}
+
+.main_container {
+  display: grid;
+  grid-template-rows: 25% 100px auto;
+  font-weight: lighter;
+  min-height: 100vw;
+  padding-top: 12%;
+  padding-left: 20%;
+  padding-right: 20%;
+}
+
+.Footer {
+  background-color: #A62139;
+  bottom: 0;
+  text-align: center;
+  left: 0;
+  right: 0;
+  text-align: center;
+  height: 90px;
+}
+
+.Blabber_Welcome {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 5;
+}
+
+.PrimaryButton {
+  background-color: #A62139;
+  border: 1px solid #A62139;
+  color: white;
+  padding: 10px;
+  transition: background-color 0.2s;
+  width: 10rem;
+}
+
+.PrimaryButton:hover {
+  background-color: #631624;
+  cursor: pointer;
+}
+
+.SecondaryButton {
+  border: 1px solid #A62139;
+  background-color: white;
+  color: #A62139;
+  padding: 10px;
+  transition: background-color 0.2s;
+  width: 10rem;
+}
+
+.SecondaryButton:hover {
+  background-color: lightgray;
+  cursor: pointer;
+}
+
+.logo {
+  width: 4rem;
+}
+
+.scChromeData, .scpm { display: none !important; }
+
+.GlobalHeader {
+  display: flex;
+  text-align: center;
+  flex-grow: 1;
+  background-color: #A62139;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  transition: transform 0.2s;
+}
+
+.GlobalHeader a {
+  color: white;
+  text-decoration: none;
+}
+
+.GlobalHeader a:hover {
+  -webkit-transform:scale(1.1);
+  transform: scale(2.1);
+  border-bottom: 1px solid white;
+}
+
+.GlobalHeader_Logo{
+  font-size: 2rem;
+  font-size: 2rem;
+}
+
+.GlobalHeader_Titles {
+  padding: 0;
+  flex: auto;
+}
+
+.GlobalHeader_Titles li{
+  list-style: none;
+  display: inline;
+  padding: 10px;
+}
+
+.GlobalHeader_List {
+  padding: 10px;
+  display: inline-block;
+  flex: auto;
+}
+
+.Header_Animation{
+  transform: translate(0,-100%);
+}
+
+.create-entry {
+  border: 1px solid lightgray;
+  height: 30rem;
+  padding: 10px;
+  -webkit-box-shadow: 7px 7px 14px -7px rgba(0,0,0,0.20);
+  -moz-box-shadow: 7px 7px 14px -7px rgba(0,0,0,0.20);
+  box-shadow: 7px 7px 14px -7px rgba(0,0,0,0.20);
+}
+
+.create-entry-buttons {
+  padding-top: 10px;
+  text-align:center;
+}
+
+.Globalheader_Gears:hover > #Large_Gear {
+  animation-name: large_spin;
+  animation-duration: 4000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+#Small_Gear {
+  margin-bottom: 20px;
+}
+
+.Globalheader_Gears:hover > #Small_Gear {
+  animation-name: small_spin;
+  animation-duration: 4000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes large_spin {
+  from {transform:rotate(0deg);}
+  to {transform:rotate(360deg);}
+}
+
+@keyframes small_spin {
+    from {transform:rotate(360deg);}
+    to {transform:rotate(0deg);}
+}
+
+.create-entry textarea {
+  padding: 5px;
+  font-weight: lighter;
+  width: 100%;
+  height: 80%;
+  resize: none;
+  border: none;
+  outline: none;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.TrashIcon {
+  position: fixed;
+  margin-top: .1%;
+  margin-left: 70%;
+  z-index: 1;
+}
+
+@media only screen and (max-width: 775px){
+  main_container {
+    padding-top: 20%;
+  }
+}
+
+@media only screen and (max-width: 540px){
+  main_container {
+    padding-top: 30%;
+    padding-bottom: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}

@@ -9,13 +9,13 @@ const crypto = require('crypto');
 const mime = require('mime-types')
 
 const app = express();
-const PORT = process.env.PORT || 4000;
+const port = process.env.PORT || 5000;
 
 let Post = require('./post.model.js');
 
 app.use(bodyParser.json());
 
-app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static(path.join(__dirname, 'client-side/build')));
 
 const mongoURL = 'mongodb://dannondarko:seedarkly1@paprplanemongo-shard-00-00-wy4yv.mongodb.net:27017,paprplanemongo-shard-00-01-wy4yv.mongodb.net:27017,paprplanemongo-shard-00-02-wy4yv.mongodb.net:27017/PaprPlaneDB?ssl=true&replicaSet=PaprPlaneMongo-shard-0&authSource=admin&retryWrites=true';
 
@@ -48,7 +48,7 @@ app.post('/api/add', (req, res) => {
 });
 
 app.get('*', (req,res) =>{
-  res.sendFile(path.join(__dirname+'/client/build/index.html'));
+  res.sendFile(path.join(__dirname+'/client-side/build/index.html'));
 });
 
 // router.route('/remove').post((req, res) => {
@@ -85,6 +85,6 @@ app.get('*', (req,res) =>{
 
 // app.use('/posts', router);
 
-app.listen(PORT, () => {
-  console.log(`Server is listening on port: ${PORT}`)
+app.listen(port, () => {
+  console.log(`Server is listening on port: ${port}`)
 });
