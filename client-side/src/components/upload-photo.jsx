@@ -19,11 +19,12 @@ class UploadPhoto extends React.Component {
 
   onFormSubmit(e){
     e.preventDefault()
-    let formData = new FormData();
+    const formData = new FormData();
     formData.append('photo_file', this.state.file, this.state.filename);
+
     axios({
       method: 'post',
-      url: 'http://localhost:4000/posts/uploadphoto',
+      url: '/api/uploadphoto',
       data: formData,
       headers: {'Content-Type': 'multipart/form-data;'}
     })

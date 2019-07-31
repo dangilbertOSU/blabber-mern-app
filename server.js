@@ -1,6 +1,5 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-// const cors = require('cors');
 const mongoose = require('mongoose');
 const multer  = require('multer')
 const path = require('path');
@@ -47,10 +46,6 @@ app.post('/api/add', (req, res) => {
     })
 });
 
-app.get('*', (req,res) =>{
-  res.sendFile(path.join(__dirname+'/client-side/build/index.html'));
-});
-
 // router.route('/remove').post((req, res) => {
 //   let post = new Post(req.body);
 //   console.log("req.body: ", req.body);
@@ -63,27 +58,26 @@ app.get('*', (req,res) =>{
 //     })
 // });
 //
-// var storage = multer.diskStorage({
-//   destination: function (req, file, cb) {
-//     cb(null, 'uploads/')
-//   },
-//   filename: function (req, file, cb) {
-//     crypto.pseudoRandomBytes(16, function (err, raw){
-//       cb(null, raw.toString('hex') + Date.now() + '.' + mime.extension(file.mimetype));
-//     });
-//   }
-// });
-//
-// let upload = multer({ storage: storage });
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/')
+  },
+  filename: function (req, file, cb) {
+    crypto.pseudoRandomBytes(16, function (err, raw){
+      cb(null, raw.toString('hex') + Date.now() + '.' + mime.extension(file.mimetype));
+    });
+  }
+});
 
-//
-// router.route('/uploadphoto').post(upload.single('photo_file'), (req, res) => {
-//   console.log('received request');
-//   res.send();
-// });
+let upload = multer({ storage: storage });
 
+app.post('/api/uploadphoto', upload.single('photo_file'), (req, res) => {
+  res.send();
+});
 
-// app.use('/posts', router);
+app.get('*', (req,res) =>{
+  res.sendFile(path.join(__dirname+'/client-side/build/index.html'));
+});
 
 app.listen(port, () => {
   console.log(`Server is listening on port: ${port}`)
