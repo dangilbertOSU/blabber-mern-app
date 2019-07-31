@@ -42,7 +42,7 @@ export default class EntriesFeed extends Component {
     if (response.status !== 200) {
      throw Error(body.message)
     }
-    console.log("Body: ", body)
+
     return body;
   };
 
