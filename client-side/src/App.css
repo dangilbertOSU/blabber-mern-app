@@ -10,7 +10,7 @@ a {
   color: white;
 }
 
-.Submissions {
+.submissions {
   padding-top: 30px;
   grid-column-start: 1;
   grid-column-end: 6;
@@ -19,7 +19,7 @@ a {
   flex-direction: column-reverse;
 }
 
-.Submissions_Post {
+.submissions_post {
   padding: 1rem;
   margin-top: 2rem;
   border: 1px solid lightgray;
@@ -30,16 +30,16 @@ a {
   box-shadow: 7px 7px 14px -7px rgba(0,0,0,0.20);
 }
 
-.Submissions_Post.fade_in{
+.submissions_post.fade_in{
   opacity: 1;
   transform: translateY(0);
 }
 
-.Submissions_Post_Date{
+.submissions_post_date{
   color: gray;
 }
 
-.Submissions_Post:hover {
+.submissions_Post:hover {
   box-shadow: 9px 9px 20px rgba(0,0,0,0.10);
 }
 

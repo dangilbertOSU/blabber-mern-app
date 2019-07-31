@@ -56,16 +56,16 @@ export default class EntriesFeed extends Component {
     return (
       <div>
         <CreateEntry updateEntries={this.updateEntries} />
-        <div className="Submissions">
+        <div className="submissions">
          <Controller>
           {
             /* add reverse={false} to not reverse the fade*/
             this.state.posts.map((post, index) => {
               return (
                 <Scene classToggle="fade_in" triggerElement="#dummy" offset={100}>
-                <div className="Submissions_Post">
+                <div className="submissions_post">
                   <p>{post.message}</p>
-                  <p className="Submissions_Post_Date">{post.date}</p>
+                  <p className="submissions_post_date">{post.date}</p>
                 </div>
                 </Scene>
               )
