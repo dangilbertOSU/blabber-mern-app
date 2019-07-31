@@ -9,7 +9,7 @@ const crypto = require('crypto');
 const mime = require('mime-types')
 
 const app = express();
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 
 let Post = require('./post.model.js');
 
@@ -47,8 +47,8 @@ app.post('/api/add', (req, res) => {
     })
 });
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/build/index.html'));
+app.get('*', (req,res) =>{
+  res.sendFile(path.join(__dirname+'/client/build/index.html'));
 });
 
 // router.route('/remove').post((req, res) => {
@@ -85,6 +85,6 @@ app.get('*', (req, res) => {
 
 // app.use('/posts', router);
 
-app.listen(process.env.PORT || PORT, () => {
-  console.log('Server is listening on some port lmao')
+app.listen(PORT, () => {
+  console.log(`Server is listening on port: ${PORT}`)
 });
