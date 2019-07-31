@@ -48,7 +48,8 @@ app.post('/api/add', (req, res) => {
 });
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname+'/client/build/index.html'));
+  onst index = path.join(__dirname, 'build', 'index.html');
+  res.sendFile(index);
 });
 
 // router.route('/remove').post((req, res) => {
