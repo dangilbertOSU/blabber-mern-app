@@ -78,6 +78,6 @@ app.post('/add', (req, res) => {
 
 app.use('/posts', router);
 
-app.listen(PORT, () => {
-  console.log('Server is listening on port: ', PORT)
+app.listen(process.env.PORT || PORT, () => {
+  console.log('Server is listening on some port lmao')
 });
