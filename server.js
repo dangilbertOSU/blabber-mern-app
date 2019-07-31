@@ -1,19 +1,21 @@
 const express = require('express');
-const app = express();
 const bodyParser = require('body-parser');
 // const cors = require('cors');
 const mongoose = require('mongoose');
-var multer  = require('multer')
-const PORT = 4000;
+const multer  = require('multer')
+const path = require('path');
 const router = express.Router();
 const crypto = require('crypto');
-var mime = require('mime-types')
+const mime = require('mime-types')
+
+const app = express();
+const PORT = 4000;
 
 let Post = require('./post.model.js');
 
-/* Cors allows for other domains to make requests here */
-// app.use(cors());
 app.use(bodyParser.json());
+
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 const mongoURL = 'mongodb://dannondarko:seedarkly1@paprplanemongo-shard-00-00-wy4yv.mongodb.net:27017,paprplanemongo-shard-00-01-wy4yv.mongodb.net:27017,paprplanemongo-shard-00-02-wy4yv.mongodb.net:27017/PaprPlaneDB?ssl=true&replicaSet=PaprPlaneMongo-shard-0&authSource=admin&retryWrites=true';
 
@@ -24,20 +26,7 @@ connection.once('open', function(){
   console.log('MongoDB database connection successful');
 })
 
-var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'uploads/')
-  },
-  filename: function (req, file, cb) {
-    crypto.pseudoRandomBytes(16, function (err, raw){
-      cb(null, raw.toString('hex') + Date.now() + '.' + mime.extension(file.mimetype));
-    });
-  }
-});
-
-let upload = multer({ storage: storage });
-
-router.route('/').get((req, res) => {
+app.get('/api/posts', (req, res) => {
   Post.find(function(err, posts) {
     if(err) {
       console.log(err);
@@ -47,7 +36,7 @@ router.route('/').get((req, res) => {
   });
 });
 
-app.post('/add', (req, res) => {
+app.post('/api/add', (req, res) => {
   let post = new Post(req.body);
   post.save()
     .then(post => {
@@ -56,6 +45,10 @@ app.post('/add', (req, res) => {
     .catch(err => {
       res.status(400).send('adding a post has failed.');
     })
+});
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname+'/client/build/index.html'));
 });
 
 // router.route('/remove').post((req, res) => {
@@ -70,13 +63,27 @@ app.post('/add', (req, res) => {
 //     })
 // });
 //
+// var storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, 'uploads/')
+//   },
+//   filename: function (req, file, cb) {
+//     crypto.pseudoRandomBytes(16, function (err, raw){
+//       cb(null, raw.toString('hex') + Date.now() + '.' + mime.extension(file.mimetype));
+//     });
+//   }
+// });
+//
+// let upload = multer({ storage: storage });
+
+//
 // router.route('/uploadphoto').post(upload.single('photo_file'), (req, res) => {
 //   console.log('received request');
 //   res.send();
 // });
 
 
-app.use('/posts', router);
+// app.use('/posts', router);
 
 app.listen(process.env.PORT || PORT, () => {
   console.log('Server is listening on some port lmao')
