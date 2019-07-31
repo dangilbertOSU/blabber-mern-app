@@ -37,15 +37,15 @@ var storage = multer.diskStorage({
 
 let upload = multer({ storage: storage });
 
-// app.get('/upload', (req, res) => {
-//   Post.find(function(err, posts) {
-//     if(err) {
-//       console.log(err);
-//     } else {
-//       res.json(posts);
-//     }
-//   });
-// });
+router.route('/').get((req, res) => {
+  Post.find(function(err, posts) {
+    if(err) {
+      console.log(err);
+    } else {
+      res.json(posts);
+    }
+  });
+});
 
 app.post('/add', (req, res) => {
   let post = new Post(req.body);
@@ -69,11 +69,11 @@ app.post('/add', (req, res) => {
 //       res.status(400).send('adding a post has failed.');
 //     })
 // });
-
-router.route('/uploadphoto').post(upload.single('photo_file'), (req, res) => {
-  console.log('received request');
-  res.send();
-});
+//
+// router.route('/uploadphoto').post(upload.single('photo_file'), (req, res) => {
+//   console.log('received request');
+//   res.send();
+// });
 
 
 app.use('/posts', router);
