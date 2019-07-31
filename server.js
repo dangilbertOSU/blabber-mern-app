@@ -37,15 +37,15 @@ var storage = multer.diskStorage({
 
 let upload = multer({ storage: storage });
 
-router.route('/').get((req, res) => {
-  Post.find(function(err, posts) {
-    if(err) {
-      console.log(err);
-    } else {
-      res.json(posts);
-    }
-  });
-});
+// app.get('/upload', (req, res) => {
+//   Post.find(function(err, posts) {
+//     if(err) {
+//       console.log(err);
+//     } else {
+//       res.json(posts);
+//     }
+//   });
+// });
 
 app.post('/add', (req, res) => {
   let post = new Post(req.body);
@@ -58,17 +58,17 @@ app.post('/add', (req, res) => {
     })
 });
 
-router.route('/remove').post((req, res) => {
-  let post = new Post(req.body);
-  console.log("req.body: ", req.body);
-  post.remove()
-    .then(post => {
-      res.status(200).json({'post': 'post removed successfully'});
-    })
-    .catch(err => {
-      res.status(400).send('adding a post has failed.');
-    })
-});
+// router.route('/remove').post((req, res) => {
+//   let post = new Post(req.body);
+//   console.log("req.body: ", req.body);
+//   post.remove()
+//     .then(post => {
+//       res.status(200).json({'post': 'post removed successfully'});
+//     })
+//     .catch(err => {
+//       res.status(400).send('adding a post has failed.');
+//     })
+// });
 
 router.route('/uploadphoto').post(upload.single('photo_file'), (req, res) => {
   console.log('received request');
