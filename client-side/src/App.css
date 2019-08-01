@@ -53,6 +53,21 @@ a {
   padding-right: 20%;
 }
 
+@media only screen and (max-width: 775px){
+  .main_container {
+    padding-top: 20%;
+  }
+}
+
+@media only screen and (max-width: 540px){
+  .main_container {
+    padding-top: 30%;
+    padding-bottom: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}
+
 .Footer {
   background-color: #A62139;
   bottom: 0;
@@ -210,19 +225,4 @@ a {
   margin-top: .1%;
   margin-left: 70%;
   z-index: 1;
-}
-
-@media only screen and (max-width: 775px){
-  .main_container {
-    padding-top: 20%;
-  }
-}
-
-@media only screen and (max-width: 540px){
-  .main_container {
-    padding-top: 30%;
-    padding-bottom: 5%;
-    padding-left: 5%;
-    padding-right: 5%;
-  }
 }
