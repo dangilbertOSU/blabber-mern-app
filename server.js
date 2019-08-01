@@ -1,83 +1,41 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
-const multer  = require('multer')
 const path = require('path');
+const passport = require('passport');
+const passportLocal = require('passport-local');
 const router = express.Router();
-const crypto = require('crypto');
-const mime = require('mime-types')
 
 const app = express();
 const port = process.env.PORT || 5000;
 
-let Post = require('./post.model.js');
+const mongoUser = process.env.mongoUser;
+const mongoPassword = process.env.mongoPass;
 
 app.use(bodyParser.json());
-
 app.use(express.static(path.join(__dirname, 'client-side/build')));
 
-const mongoURL = 'mongodb://dannondarko:seedarkly1@paprplanemongo-shard-00-00-wy4yv.mongodb.net:27017,paprplanemongo-shard-00-01-wy4yv.mongodb.net:27017,paprplanemongo-shard-00-02-wy4yv.mongodb.net:27017/PaprPlaneDB?ssl=true&replicaSet=PaprPlaneMongo-shard-0&authSource=admin&retryWrites=true';
+// Connect to mongo database
+require ('./server-modules/handle-mongo-connect.js');
 
-mongoose.connect(mongoURL, { useNewUrlParser: true});
-const connection = mongoose.connection;
+//Handle Login
+require ('./server-modules/handle-login.js')(app);
 
-connection.once('open', function(){
-  console.log('MongoDB database connection successful');
-})
+//Handle Register
+require ('./server-modules/handle-register.js')(app);
 
-app.get('/api/posts', (req, res) => {
-  Post.find(function(err, posts) {
-    if(err) {
-      console.log(err);
-    } else {
-      res.json(posts);
-    }
-  });
-});
+// Load posts
+require ('./server-modules/handle-load-posts.js')(app);
 
-app.post('/api/add', (req, res) => {
-  let post = new Post(req.body);
-  post.save()
-    .then(post => {
-      res.status(200).json({'post': 'post added successfully'});
-    })
-    .catch(err => {
-      res.status(400).send('adding a post has failed.');
-    })
-});
+// Add Post
+require ('./server-modules/handle-add-post.js')(app);
 
-// router.route('/remove').post((req, res) => {
-//   let post = new Post(req.body);
-//   console.log("req.body: ", req.body);
-//   post.remove()
-//     .then(post => {
-//       res.status(200).json({'post': 'post removed successfully'});
-//     })
-//     .catch(err => {
-//       res.status(400).send('adding a post has failed.');
-//     })
-// });
-//
-var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'uploads/')
-  },
-  filename: function (req, file, cb) {
-    crypto.pseudoRandomBytes(16, function (err, raw){
-      cb(null, raw.toString('hex') + Date.now() + '.' + mime.extension(file.mimetype));
-    });
-  }
-});
+// Upload photo
+require ('./server-modules/handle-upload-photo.js')(app);
 
-let upload = multer({ storage: storage });
+// handle * pages
+let pathName = (__dirname+'/client-side/build/index.html');
+require ('./server-modules/handle-other-page-requests.js')(app, pathName);
 
-app.post('/api/uploadphoto', upload.single('photo_file'), (req, res) => {
-  res.send();
-});
-
-app.get('*', (req,res) =>{
-  res.sendFile(path.join(__dirname+'/client-side/build/index.html'));
-});
 
 app.listen(port, () => {
   console.log(`Server is listening on port: ${port}`)

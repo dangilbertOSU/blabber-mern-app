@@ -1,0 +1,22 @@
+a {
+  color: black;
+}
+
+form {
+  display:block;
+  width: 20rem;
+}
+
+input, label {
+    display:block;
+}
+
+input {
+  border: none;
+  border-bottom: 1px solid #A62139;
+  color: black;
+  font-size: 1rem;
+  padding: 10px 10px 2px 0px;
+  margin-bottom: 10px;
+  width: 310px;
+}

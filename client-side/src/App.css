@@ -6,10 +6,6 @@ body {
   font-family: Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: white;
-}
-
 .submissions {
   padding-top: 30px;
   grid-column-start: 1;
@@ -23,7 +19,7 @@ a {
   padding: 1rem;
   margin-top: 2rem;
   border: 1px solid lightgray;
-  opacity: 0;
+  /* opacity: 0; */
   transform: translateY(50px);
   transition: all 0.2s ease-out;
   position: relative;

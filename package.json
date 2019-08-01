@@ -4,6 +4,7 @@
   "description": "A simple blogging application.",
   "main": "server.js",
   "dependencies": {
+    "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
@@ -11,12 +12,18 @@
     "mime": "^2.4.4",
     "mime-types": "^2.1.24",
     "mongoose": "^5.6.1",
-    "multer": "^1.4.1"
+    "multer": "^1.4.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0"
   },
   "scripts": {
     "start": "node server.js",
+    "dev": "nodemon server.js",
     "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "author": "Dannon A. Gilbert",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
 }

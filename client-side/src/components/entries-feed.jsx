@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import CreateEntry from './create-entry';
-import { Controller, Scene } from 'react-scrollmagic';
+// import { Controller, Scene } from 'react-scrollmagic';
 // import './entries-feed.css'
 
 export default class EntriesFeed extends Component {
@@ -9,7 +9,8 @@ export default class EntriesFeed extends Component {
     super(props);
 
     this.state = {
-      posts: []
+      posts: [],
+      loaded: false
     }
   }
 
@@ -33,6 +34,7 @@ export default class EntriesFeed extends Component {
     this.callBackendAPI()
       .then(res => this.setState({posts: res}))
       .catch(err => console.log(err));
+    this.setState({loaded: true})
   }
 
   callBackendAPI = async () => {
@@ -57,21 +59,22 @@ export default class EntriesFeed extends Component {
       <div>
         <CreateEntry updateEntries={this.updateEntries} />
         <div className="submissions">
-         <Controller>
           {
-            /* add reverse={false} to not reverse the fade*/
-            this.state.posts.map((post, index) => {
-              return (
-                <Scene classToggle="fade_in" triggerElement="#dummy" offset={100}>
-                <div className="submissions_post">
-                  <p>{post.message}</p>
-                  <p className="submissions_post_date">{post.date}</p>
-                </div>
-                </Scene>
-              )
-            })
+            !this.state.loaded ? (<p>loading...</p>) :
+            (this.state.posts.map((post, index) => {
+              if(post.message && post.date){
+                return (
+                  <div className="submissions_post">
+                    <p>{post.message}</p>
+                    <p className="submissions_post_date">{post.date}</p>
+                  </div>
+                )
+              }
+              else {
+                return null;
+              }
+            }))
           }
-        </Controller>
         </div>
       </div>
     )
