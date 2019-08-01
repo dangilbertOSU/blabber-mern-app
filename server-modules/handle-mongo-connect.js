@@ -24,6 +24,7 @@ exports.login = (user, plainTextPassword, req, res) => {
       .compare(plainTextPassword, hash, (err, response) => {
         if(err) {
           console.log(err)
+          res.send(err)
         }
         else {
           if(response == true){
@@ -56,10 +57,11 @@ exports.register = (user, plainTextPassword, req, res) => {
             res.send('User has been created');
           })
           .catch(err => {
+            res.send(err)
             console.error(err);
           })
       })
-      .catch(err => console.error(err.message));
+      .catch(err => res.send(err));
     }
   });
 }
