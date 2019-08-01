@@ -7,7 +7,8 @@ const mongoPassword = process.env.mongoPass;
 let Post = require('../post.model.js');
 let User = require('../user.model.js')
 
-const mongoURL = `mongodb://${mongoUser}:${mongoPassword}@paprplanemongo-shard-00-00-wy4yv.mongodb.net:27017,paprplanemongo-shard-00-01-wy4yv.mongodb.net:27017,paprplanemongo-shard-00-02-wy4yv.mongodb.net:27017/PaprPlaneDB?ssl=true&replicaSet=PaprPlaneMongo-shard-0&authSource=admin&retryWrites=true`;
+//const mongoURL = `mongodb://${mongoUser}:${mongoPassword}@paprplanemongo-shard-00-00-wy4yv.mongodb.net:27017,paprplanemongo-shard-00-01-wy4yv.mongodb.net:27017,paprplanemongo-shard-00-02-wy4yv.mongodb.net:27017/PaprPlaneDB?ssl=true&replicaSet=PaprPlaneMongo-shard-0&authSource=admin&retryWrites=true`;
+const mongoURL = `mongodb://dannondarko:seedarkly1@paprplanemongo-shard-00-00-wy4yv.mongodb.net:27017,paprplanemongo-shard-00-01-wy4yv.mongodb.net:27017,paprplanemongo-shard-00-02-wy4yv.mongodb.net:27017/PaprPlaneDB?ssl=true&replicaSet=PaprPlaneMongo-shard-0&authSource=admin&retryWrites=true`;
 
 mongoose.connect(mongoURL, { useNewUrlParser: true});
 const connection = mongoose.connection;
