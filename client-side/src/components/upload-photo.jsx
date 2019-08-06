@@ -28,13 +28,16 @@ class UploadPhoto extends React.Component {
       data: formData,
       headers: {'Content-Type': 'multipart/form-data;'}
     })
+
+    this.props.setVisible(false)
   }
 
   render() {
     return (
       <form onSubmit={this.onFormSubmit}>
         <input type="file" name="photo_file" onChange={this.onChange}/>
-        <input class="SecondaryButton" type="submit" value="Upload."/>
+        <input class="SecondaryButton" type="submit" value="upload"/>
+        <button class="PrimaryButton" onClick={() => this.props.setVisible(false)}>cancel</button>
       </form>
     )
   }

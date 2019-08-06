@@ -29,6 +29,9 @@ require ('./server-modules/handle-load-posts.js')(app);
 // Add Post
 require ('./server-modules/handle-add-post.js')(app);
 
+// Remove Post
+require ('./server-modules/handle-remove-post.js')(app);
+
 // Upload photo
 require ('./server-modules/handle-upload-photo.js')(app);
 

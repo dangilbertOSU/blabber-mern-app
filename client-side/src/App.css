@@ -16,14 +16,17 @@ body {
 }
 
 .submissions_post {
-  padding: 1rem;
-  margin-top: 2rem;
+  background-color: #FFFFFF;
   border: 1px solid lightgray;
+  box-shadow: 7px 7px 14px -7px rgba(0,0,0,0.20);
+  cursor: grab;
+  margin-top: 2rem;
+  padding: 1rem;
+  position: relative;
   /* opacity: 0; */
   transform: translateY(50px);
   transition: all 0.2s ease-out;
-  position: relative;
-  box-shadow: 7px 7px 14px -7px rgba(0,0,0,0.20);
+  z-index: 2;
 }
 
 .submissions_post.fade_in{
@@ -216,9 +219,39 @@ body {
   font-family: Helvetica, Arial, sans-serif;
 }
 
-.TrashIcon {
+.trash-area {
+  background-color: #A62139;
+  bottom: 0;
+  color: white;
+  height: 5rem;
+  margin-left: -20%;
+  padding-top: 2rem;
   position: fixed;
-  margin-top: .1%;
-  margin-left: 70%;
+  text-align: center;
+  width: 100%;
   z-index: 1;
+}
+
+.trashicon {
+  fill: #FFFFFF;
+}
+
+.upload-modal-background {
+  background: rgba(0, 0, 0, 0.5);
+  height: 100vh;
+  margin-left: -20%;
+  margin-top: -12%;
+  position: absolute;
+  width: 100vw;
+  z-index: 3;
+}
+
+.upload-modal {
+  background-color: white;
+  border: 1px solid #A62139;
+  left: 50%;
+  padding: 2rem;
+  position: fixed;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }

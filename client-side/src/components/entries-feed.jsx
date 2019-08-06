@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
 import CreateEntry from './create-entry';
-// import { Controller, Scene } from 'react-scrollmagic';
-// import './entries-feed.css'
+import Draggable from 'react-draggable';
+import React, {Component} from 'react';
+import { ReactComponent as TrashIcon } from '../svg-files/trash-icon.svg'
 
 export default class EntriesFeed extends Component {
 
@@ -10,7 +10,8 @@ export default class EntriesFeed extends Component {
 
     this.state = {
       posts: [],
-      loaded: false
+      loaded: false,
+      trashVisible: false
     }
   }
 
@@ -48,26 +49,76 @@ export default class EntriesFeed extends Component {
     return body;
   };
 
-  deleteLastEntry = () => {
+  deleteEntry = (post) => {
     if (window.confirm("Press OK to confirm.")) {
-      console.log('Post not removed because I don\'t know how');
+
+      let postsArrayCopy = this.state.posts.slice();
+      let index = postsArrayCopy.indexOf(post);
+      if(index !== -1){
+        postsArrayCopy.splice(index, 1);
+        this.setState({ posts: postsArrayCopy })
+      }
+
+      fetch('/api/delete', {
+          method: "POST", // *GET, POST, PUT, DELETE, etc.
+          mode: "cors", // no-cors, cors, *same-origin
+          cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+          credentials: "same-origin", // include, *same-origin, omit
+          headers: { "Content-Type": "application/json" },
+          redirect: "follow", // manual, *follow, error
+          referrer: "no-referrer", // no-referrer, *client
+          body: JSON.stringify(post), // body data type must match "Content-Type" header
+      }).then((res) => console.log(res))
+      .then((data) =>  console.log(data))
+      .catch((err)=> console.log(err))
     }
+  }
+
+  handleStart = (event) => {
+    event.preventDefault();
+    this.setState({trashVisible: true});
+  }
+
+  handleStop = (event, post) => {
+    event.preventDefault();
+    this.setState({trashVisible: false});
+    //console.log(event.screenX, event.screenY)
+    //console.log(window.innerHeight - 80);
+    if(event.screenY >= 500){
+      this.deleteEntry(post);
+    }
+    // console.log("OH NO I'VE StOPPED: ", post)
   }
 
   render() {
     return (
       <div>
         <CreateEntry updateEntries={this.updateEntries} />
+        {
+          this.state.trashVisible ?
+          <div className="trash-area">
+            <TrashIcon className="trashicon"/>
+          </div> : null
+        }
         <div className="submissions">
           {
             !this.state.loaded ? (<p>loading...</p>) :
             (this.state.posts.map((post, index) => {
               if(post.message && post.date){
                 return (
-                  <div className="submissions_post">
-                    <p>{post.message}</p>
-                    <p className="submissions_post_date">{post.date}</p>
-                  </div>
+                  <Draggable
+                    defaultPosition={{x: 0, y: 0}}
+                    position={{x: 0, y: 0}}
+                    grid={[25, 25]}
+                    scale={1}
+                    onStart= {(event) => this.handleStart(event)}
+                    onStop={(event) => this.handleStop(event, post)}
+                  >
+                    <div className="submissions_post">
+                      <p>{post.message}</p>
+                      <p className="submissions_post_date">{post.date}</p>
+                    </div>
+                  </Draggable>
                 )
               }
               else {
