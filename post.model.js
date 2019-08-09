@@ -3,20 +3,60 @@ const Schema = mongoose.Schema;
 
 let Post = new Schema({
   username: {
-    type: String
+    type: String,
   },
   password: {
-    type: String
+    type: String,
   },
-  picture: {
-    type: String
+  url: {
+    type: String,
   },
   message: {
-    type: String
+    type: String,
   },
   date: {
-    type: String
-  }
+    type: String,
+  },
+  paragraph: {
+    message: {
+      type: String,
+    },
+    date: {
+      type: String,
+    },
+    x: {
+      type: Number,
+    },
+    y: {
+      type: Number,
+    },
+  },
+  heading: {
+    message: {
+      type: String,
+    },
+    date: {
+      type: String,
+    },
+    x: {
+      type: Number,
+    },
+    y: {
+      type: Number,
+    },
+  },
+  x: {
+    type: Number,
+  },
+  y: {
+    type: Number,
+  },
+  width: {
+    type: Number,
+  },
+  height: {
+    type: Number,
+  },
 });
 
-module.exports = mongoose.model('Post', Post)
+module.exports = mongoose.model('Post', Post);

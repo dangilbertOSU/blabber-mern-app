@@ -5,32 +5,38 @@ class UploadPhoto extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state ={
-      file: null
-    }
+    this.state = {
+      file: null,
+    };
 
-    this.onFormSubmit = this.onFormSubmit.bind(this)
-    this.onChange = this.onChange.bind(this)
+    this.onChange = this.onChange.bind(this);
   }
 
   onChange(e) {
-    this.setState({ file: e.target.files[0] })
+    this.setState({ file: e.target.files[0] });
   }
 
-  onFormSubmit(e){
-    e.preventDefault()
+  onFormSubmit = async(e) => {
+    e.preventDefault();
     const formData = new FormData();
     formData.append('photo_file', this.state.file, this.state.filename);
 
-    axios({
+    await axios({
       method: 'post',
       url: '/api/uploadphoto',
       data: formData,
-      headers: {'Content-Type': 'multipart/form-data;'}
-    })
+      headers: { 'Content-Type': 'multipart/form-data;' },
+    });
 
-    this.props.setVisible(false)
-  }
+    this.props.setVisible(false);
+    window.location.reload();
+  };
+
+  updateEntries = (post) => {
+    let postsArrayCopy = this.props.posts;
+    postsArrayCopy.push(post);
+    this.props.setPosts(postsArrayCopy);
+  };
 
   render() {
     return (
@@ -39,7 +45,7 @@ class UploadPhoto extends React.Component {
         <input class="SecondaryButton" type="submit" value="upload"/>
         <button class="PrimaryButton" onClick={() => this.props.setVisible(false)}>cancel</button>
       </form>
-    )
+    );
   }
 }
 

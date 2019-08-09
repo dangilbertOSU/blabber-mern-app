@@ -8,12 +8,14 @@ addPost = (app) => {
     let post = new Post(req.body);
     post.save()
       .then(post => {
-        res.status(200).json({'post': 'post added successfully'});
+        res.status(200).json({
+          post: 'post added successfully',
+        });
       })
       .catch(err => {
         res.status(400).send('adding a post has failed.');
-      })
+      });
   });
-}
+};
 
 module.exports = addPost;

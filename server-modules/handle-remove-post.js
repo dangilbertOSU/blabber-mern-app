@@ -9,12 +9,12 @@ removePost = (app) => {
     console.log(post);
     post.remove()
       .then(post => {
-        res.status(200).json({'post': 'post removed successfully'});
+        res.status(200).json({ post: 'post removed successfully' });
       })
       .catch(err => {
         res.status(400).send('removing a post has failed.');
-      })
+      });
   });
-}
+};
 
 module.exports = removePost;

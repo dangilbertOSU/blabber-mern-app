@@ -1,18 +1,18 @@
 import React from 'react';
-import UploadPhoto from './upload-photo';
+import CreateEntry from './create-entry';
 
-export const UploadModal = (props) => {
+export const EntryModal = (props) => {
 
   if (props.visible) {
     document.body.style.overflow = 'hidden';
     return (
       <div className="upload-modal-background">
         <div className="upload-modal">
-          <UploadPhoto
+          <CreateEntry
             setVisible={props.setVisible}
-            visible={props.visible}
-            setPosts={props.setPosts}
+            updateEntries={props.updateEntries}
             posts={props.posts}
+            setPosts={props.setPosts}
           />
         </div>
       </div>
@@ -21,6 +21,7 @@ export const UploadModal = (props) => {
     document.body.style.overflow = 'revert';
     return (null);
   }
+
 };
 
-export default UploadModal;
+export default EntryModal;
