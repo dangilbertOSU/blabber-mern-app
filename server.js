@@ -1,4 +1,5 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const path = require('path');
 const passport = require('passport');
@@ -13,6 +14,14 @@ const mongoPassword = process.env.mongoPass;
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'client-side/build')));
+app.use(cookieParser());
+
+// Cookie parser
+const authorize = require('./server-modules/handle-authorization.js');
+
+app.get('/checkToken', authorize, (req, res) => {
+  res.status(200).json({ username: req.username });
+});
 
 // Connect to mongo database
 require('./server-modules/handle-mongo-connect.js');
@@ -26,8 +35,15 @@ require('./server-modules/handle-register.js')(app);
 // Load posts
 require('./server-modules/handle-load-posts.js')(app);
 
+// Add Page
+require('./server-modules/handle-add-page.js')(app);
+
 // Add Post
 require('./server-modules/handle-add-post.js')(app);
+
+app.get('/users/:userId', authorize, (req, res) => {
+  res.send(req.params);
+});
 
 // Update Post
 require('./server-modules/handle-update.js')(app);

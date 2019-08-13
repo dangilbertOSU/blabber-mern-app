@@ -1,11 +1,14 @@
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
 
 const mongoUser = process.env.mongoUser;
 const mongoPassword = process.env.mongoPass;
 
 let Post = require('../post.model.js');
-let User = require('../user.model.js');
+let UserSchema = require('../user.model.js');
+
+const secret = 'allyouneedisfudge';
 
 const mongoURL = 'mongodb://dannondarko:seedarkly1@paprplanemongo-shard-00-00-' +
 'wy4yv.mongodb.net:27017,paprplanemongo-shard-00-01-wy4yv.mongodb.net:27017,' +
@@ -20,47 +23,27 @@ connection.once('open', function () {
   console.log('MongoDB database connection successful');
 });
 
-exports.login = (user, plainTextPassword, req, res) => {
-  Post.findOne({ username: user }, function (err, obj) {
-    if (obj) {
-      const hash = obj.password;
-      bcrypt
-      .compare(plainTextPassword, hash, (err, response) => {
-        if (err) {
-          console.log(err);
-          res.send(err);
-        } else {
-          if (response == true) {
-            res.send('LOGGED IN');
-          }
-        }
-      });
-    }
-  });
-};
-
 exports.register = (user, plainTextPassword, req, res) => {
-  Post.findOne({ username: user }, function (err, obj) {
+  const saltRounds = 10;
+
+  UserSchema.findOne({ username: user }, function (err, obj) {
     if (obj) {
-      res.send('User already exists');
+      res.json({ message: `${username} already exists.` });
     } else {
-      const saltRounds = 10;
-      bcrypt
-      .genSalt(saltRounds)
-      .then(salt => {
+      bcrypt.genSalt(saltRounds).then(salt => {
         bcrypt.hash(plainTextPassword, salt);
-      })
-      .then(hash => {
+      }).then(hash => {
+        console.log(`user: ${user}, password: ${plainTextPassword}`);
         const userObj = { username: user, password: hash };
-        let post = new Post(userObj);
-        post.save()
-          .then(post => {
-            res.send('User has been created');
-          })
-          .catch(err => {
-            res.send(err);
-            console.error(err);
-          });
+        const user = new UserSchema(userObj);
+        user.save((err) => {
+          if (err) {
+            res.status(500)
+              .send('Error registering new user please try again.');
+          } else {
+            res.status(200).send('Welcome to the club!');
+          }
+        });
       })
       .catch(err => res.send(err));
     }

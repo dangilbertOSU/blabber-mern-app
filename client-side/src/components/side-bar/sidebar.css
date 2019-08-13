@@ -1,0 +1,17 @@
+.arrow {
+  margin-top: 50vh;
+  padding: 10px;
+  position: absolute;
+  right: 0;
+}
+
+.sidebar {
+  background-color: #F7F7F7;
+  height: 100vh;
+  left: 0;
+  padding: 10px;
+  padding-top: 10%;
+  position: fixed;
+  top: 0;
+  width: 20vw;
+}

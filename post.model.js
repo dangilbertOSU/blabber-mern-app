@@ -2,60 +2,19 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let Post = new Schema({
-  username: {
-    type: String,
-  },
-  password: {
-    type: String,
-  },
-  url: {
-    type: String,
-  },
-  message: {
-    type: String,
-  },
-  date: {
-    type: String,
-  },
-  paragraph: {
-    message: {
-      type: String,
+  username: { type: String },
+  pages: {
+    page: {
+      id: { type: String },
+      date_created: { type: String },
+      contents: {
+        component: {
+          text_content: {
+            paragraph: { type: String },
+          },
+        },
+      },
     },
-    date: {
-      type: String,
-    },
-    x: {
-      type: Number,
-    },
-    y: {
-      type: Number,
-    },
-  },
-  heading: {
-    message: {
-      type: String,
-    },
-    date: {
-      type: String,
-    },
-    x: {
-      type: Number,
-    },
-    y: {
-      type: Number,
-    },
-  },
-  x: {
-    type: Number,
-  },
-  y: {
-    type: Number,
-  },
-  width: {
-    type: Number,
-  },
-  height: {
-    type: Number,
   },
 });
 

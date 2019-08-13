@@ -3,6 +3,8 @@ a {
 }
 
 form {
+  margin-top: 20%;
+  margin-left: 50%;
   display:block;
   width: 20rem;
 }

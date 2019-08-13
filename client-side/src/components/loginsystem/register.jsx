@@ -27,9 +27,18 @@ export const Login = (props) => {
           redirect: 'follow', // manual, *follow, error
           referrer: 'no-referrer', // no-referrer, *client
           body: JSON.stringify(user), // body data type must match 'Content-Type' header
-        }).then((res) => console.log('RES: ', res))
-      .then((data) =>  console.log('DATA: ', data))
-      .catch((err)=> console.log('ERR: ', err));
+        }).then(res => {
+          if (res.status === 200) {
+            props.history.push('/login');
+          } else {
+            const error = new Error(res.error);
+            throw error;
+          }
+        })
+        .catch(err => {
+          console.log(err);
+          alert('Error registering, please try again');
+        });
     }
   };
 

@@ -1,14 +1,15 @@
-import { BrowserRouter as Router, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import { Controller, Scene } from 'react-scrollmagic';
 import EntriesFeed from './entries-feed';
 import EntryModal from './entry-modal';
 import Login from './loginsystem/login';
 import React, { useState, useEffect } from 'react';
+import Register from './loginsystem/register';
 import UploadModal from './upload-modal';
 
 function Main() {
 
-  const [login, setLogin] = useState(true);
+  const [login, setLogin] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const [entryModalVisible, setEntryModalVisible] = useState(false);
   const [loaded, setLoaded] = useState(false);
@@ -81,6 +82,9 @@ function Main() {
         </Scene>
       </Controller>
       <div className="main_container">
+        <Switch>
+          <Route path="/register" exact component={Register} />
+        </Switch>
         <UploadModal
           visible={modalVisible}
           setVisible={setModalVisible}

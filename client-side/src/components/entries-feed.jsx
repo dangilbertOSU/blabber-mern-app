@@ -9,7 +9,7 @@ export default class EntriesFeed extends Component {
 
     this.state = {
       changes: [],
-      editMode: false,
+      editMode: true,
       isHovered: false,
       trashVisible: false,
       posts: props.posts,
@@ -27,14 +27,14 @@ export default class EntriesFeed extends Component {
       }
 
       await fetch('/api/delete', {
-          method: 'POST', // *GET, POST, PUT, DELETE, etc.
-          mode: 'cors', // no-cors, cors, *same-origin
-          cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-          credentials: 'same-origin', // include, *same-origin, omit
+          method: 'POST',
+          mode: 'cors',
+          cache: 'no-cache',
+          credentials: 'same-origin',
           headers: { 'Content-Type': 'application/json' },
-          redirect: 'follow', // manual, *follow, error
-          referrer: 'no-referrer', // no-referrer, *client
-          body: JSON.stringify(post), // body data type must match "Content-Type" header
+          redirect: 'follow',
+          referrer: 'no-referrer',
+          body: JSON.stringify(post),
         }).then((res) => null)
       .then((data) =>  null)
       .catch((err)=> console.log(err));
@@ -76,6 +76,12 @@ export default class EntriesFeed extends Component {
 
   handleStart = (event, post) => {
     let string = event.target.offsetParent.attributes.style.value;
+
+    // console.log(event.target.offsetParent.attributes.style.ownerElement.style.transform);
+    // console.log(event.target.offsetParent.attributes.style.ownerElement.style.width);
+    // console.log(event.target.offsetParent.attributes.style.ownerElement.style.height);
+
+    console.log(string);
 
     const position = this.getPosition(string);
     const width = this.getWidth(string);
@@ -140,7 +146,7 @@ export default class EntriesFeed extends Component {
             className='submissions_post_edit_mode'
             style={{ width: post.width, height: post.height }}
           >
-            <span className='edit-move-handle'>move</span>
+            <span className='edit-move-handle'></span>
             {this.getFormat(post)}
           </div>
         </Draggable>
@@ -185,6 +191,8 @@ export default class EntriesFeed extends Component {
       }).then((res) => null)
     .then((data) => null)
     .catch((err)=> console.log(err));
+
+    window.location.reload();
   };
 
   render() {

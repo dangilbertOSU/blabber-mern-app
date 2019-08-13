@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import userGetterSetter from '../userGetterSetter/index';
 import './login.css';
 
 export const Login = (props) => {
@@ -14,26 +15,35 @@ export const Login = (props) => {
     }
   };
 
-  const handleSubmit = (event) => {
+  const setUserName = (username) => {
+    console.log('called');
+    props.setUser(username);
+  };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (username !== '' && password.length > 3) {
       const user = { username: username, password: password };
-      fetch('/api/login', {
-          method: 'POST', // *GET, POST, PUT, DELETE, etc.
-          mode: 'cors', // no-cors, cors, *same-origin
-          cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-          credentials: 'same-origin', // include, *same-origin, omit
-          headers: { 'Content-Type': 'application/json' },
-          redirect: 'follow', // manual, *follow, error
-          referrer: 'no-referrer', // no-referrer, *client
-          body: JSON.stringify(user), // body data type must match "Content-Type" header
-        }).then((res) => {
+      await fetch('/api/authenticate', {
+        method: 'POST',
+        body: JSON.stringify(user),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      .then(res => {
         if (res.status === 200) {
-          props.setLogin(true);
+          setUserName(username);
+          props.history.push('/');
+        } else {
+          const error = new Error(res.error);
+          throw error;
         }
       })
-      .then((data) => data)
-      .catch((err)=> err);
+      .catch(err => {
+        console.log(err);
+        alert('Error logging in please try again');
+      });
     }
   };
 
@@ -64,4 +74,4 @@ export const Login = (props) => {
   );
 };
 
-export default Login;
+export default userGetterSetter(Login);
