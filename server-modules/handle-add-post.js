@@ -3,19 +3,23 @@ const app = express();
 
 let Post = require('../post.model.js');
 
-addPost = (app) => {
-  app.post('/api/add', (req, res) => {
-    let post = new Post(req.body);
-    post.save()
-      .then(post => {
-        res.status(200).json({
-          post: 'post added successfully',
+addTest = (app) => {
+  app.post('/api/addText', (req, res) => {
+    const { username, pageId, component } = req.body;
+
+    Post.findOne({ username: username }, (err, user) => {
+      if (err) console.log(err);
+      else {
+        const pages = user.pages.toJSON();
+        pages.map((page, index) => {
+          if (page.page.page_id === pageId) {
+            pages[index].page.contents.component === component;
+            console.log(page);
+          }
         });
-      })
-      .catch(err => {
-        res.status(400).send('adding a post has failed.');
-      });
+      }
+    });
   });
 };
 
-module.exports = addPost;
+module.exports = addTest;

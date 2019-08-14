@@ -5,14 +5,25 @@ let Post = new Schema({
   username: { type: String },
   pages: {
     page: {
-      id: { type: String },
+      page_id: { type: String },
+      title: { type: String },
+      description: { type: String },
       date_created: { type: String },
       contents: {
         component: {
-          text_content: {
-            paragraph: { type: String },
+          text: {
+            value: { type: String },
+            textId: { type: String },
           },
-        },
+          position: {
+            x: { type: Number },
+            y: { type: Number },
+          },
+          size: {
+            width: { type: Number },
+            height: { type: Number },
+          }
+        }
       },
     },
   },

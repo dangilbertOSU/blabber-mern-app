@@ -1,3 +1,4 @@
+import Button from '../button/index';
 import React, { useState } from 'react';
 import './login.css';
 
@@ -43,7 +44,7 @@ export const Login = (props) => {
   };
 
   return (
-    <form onSubmit={ handleSubmit }>
+    <form class="form" onSubmit={ handleSubmit }>
       <section>
         <input
           type="text"
@@ -60,8 +61,8 @@ export const Login = (props) => {
       </section>
       <br/>
       <section>
-        <button type="submit" className="PrimaryButton">Register</button>
-        <p>Already have an account? <a href="/">click here to login.</a></p>
+        <Button type="submit" variant="primary">Register</Button>
+        <p>Already have an account? <a href="/login">click here to login.</a></p>
       </section>
     </form>
   );

@@ -1,8 +1,8 @@
 a {
-  color: black;
+  color: #A62139;
 }
 
-form {
+.form {
   margin-top: 20%;
   margin-left: 50%;
   display:block;
@@ -15,7 +15,7 @@ input, label {
 
 input {
   border: none;
-  border-bottom: 1px solid #A62139;
+  border-bottom: 2px solid #A62139;
   color: black;
   font-size: 1rem;
   padding: 10px 10px 2px 0px;

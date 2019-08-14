@@ -1,0 +1,19 @@
+.main_container {
+  display: inline-block;
+  width: 100%;
+}
+
+/* @media only screen and (max-width: 775px){
+  .main_container {
+    padding-top: 20%;
+  }
+}
+
+@media only screen and (max-width: 540px){
+  .main_container {
+    padding-top: 30%;
+    padding-bottom: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+} */

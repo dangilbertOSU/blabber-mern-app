@@ -1,6 +1,8 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
 
 const mongoUser = process.env.mongoUser;
 const mongoPassword = process.env.mongoPass;
@@ -16,7 +18,6 @@ const mongoURL = 'mongodb://dannondarko:seedarkly1@paprplanemongo-shard-00-00-' 
 'PaprPlaneMongo-shard-0&authSource=admin&retryWrites=true';
 
 mongoose.connect(mongoURL, { useNewUrlParser: true });
-mongoose.set('useFindAndModify', false);
 const connection = mongoose.connection;
 
 connection.once('open', function () {
@@ -33,7 +34,6 @@ exports.register = (user, plainTextPassword, req, res) => {
       bcrypt.genSalt(saltRounds).then(salt => {
         bcrypt.hash(plainTextPassword, salt);
       }).then(hash => {
-        console.log(`user: ${user}, password: ${plainTextPassword}`);
         const userObj = { username: user, password: hash };
         const user = new UserSchema(userObj);
         user.save((err) => {

@@ -1,17 +1,23 @@
 import Button from '../button/index';
 import React from 'react';
 
+import './header.css';
+
 const Header = (props) => {
+
+  const LogoutButton = <Button variant="secondary" href="/login">log out</Button>;
+  /* const LoginButton = <Button variant="secondary" href="/login">log in</Button>; */
+
   return (
-      <div className="GlobalHeader">
-        <div className="GlobalHeader_Left GlobalHeader_List">
-          <ul className="GlobalHeader_Titles">
-            <li><Button variant="plain" href="/">Blabber.</Button></li>
+      <div className="header">
+        <div className="header_left header_list">
+          <ul className="header_titles">
+            <li><Button  className="header_logo" variant="plain" href="/">blabber.</Button></li>
           </ul>
         </div>
-        <div className="GlobalHeader_Right GlobalHeader_List">
+        <div className="header_right header_list">
           <ul>
-            <li><Button variant="secondary" href="/login">log out</Button></li>
+            <li>{LogoutButton}</li>
           </ul>
         </div>
       </div>

@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './sidebar.css';
-import { ReactComponent as Arrow } from './arrow.svg';
+import Arrow from '../arrow/index';
 
 const Sidebar = (props) => {
   const {
@@ -9,16 +9,23 @@ const Sidebar = (props) => {
     ...rest
   } = props;
 
+  const [expanded, setExpanded] = useState(false);
+
   return (
-    <div className={className} {...rest}>
-      {children}
-      <Arrow/>
+    <div className={expanded ? 'sidebar expanded' : 'sidebar'} {...rest}>
+      <div className={expanded ? 'content dissolve' : 'content'}>
+        {children}
+      </div>
+        <Arrow
+          className={expanded ? 'arrow rotated' : 'arrow'}
+          onClick={() => setExpanded(!expanded)}
+        />
     </div>
   );
 };
 
-Sidebar.defaultProps = {
-  className: 'sidebar',
-};
+// Sidebar.defaultProps = {
+//   className: 'sidebar',
+// };
 
 export default Sidebar;

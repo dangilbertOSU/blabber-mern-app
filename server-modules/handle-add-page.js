@@ -9,7 +9,7 @@ addPage = (app) => {
     let post = new Post(page);
     console.log('username: ', username);
 
-    Post.update({ username }, { $push: { pages: page } }, (err, user) => {
+    Post.updateOne({ username }, { $push: { pages: page } }, (err, user) => {
       (err === null) ? console.log('updated') : console.log(err);
     });
   });

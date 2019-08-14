@@ -32,6 +32,12 @@ require('./server-modules/handle-login.js')(app);
 //Handle Register
 require('./server-modules/handle-register.js')(app);
 
+// Load user setPage
+require('./server-modules/load-user-pages.js')(app);
+
+// Load single page
+require('./server-modules/load-single-page.js')(app);
+
 // Load posts
 require('./server-modules/handle-load-posts.js')(app);
 

@@ -5,7 +5,6 @@ let Post = require('../post.model.js');
 handleRegister = (app) => {
   app.post('/api/register', (req, res) => {
     const { username, password } = req.body;
-    console.log(`username: ${username} - password: ${password}`);
     const user = new UserSchema({ username, password });
     const post = new Post({ username: username });
     user.save((err) => {

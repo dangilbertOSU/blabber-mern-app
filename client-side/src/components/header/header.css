@@ -1,0 +1,25 @@
+.header {
+  display: flex;
+  text-align: center;
+  flex-grow: 1;
+  background-color: #A62139;
+  top: 0;
+  width: 100%;
+  transition: transform 0.2s;
+  z-index: 3;
+}
+
+.header_list {
+  padding: 10px;
+  display: inline-block;
+  flex: auto;
+}
+
+.header_logo {
+  font-size: 1.3rem;
+}
+
+.header_titles {
+  padding: 0;
+  flex: auto;
+}

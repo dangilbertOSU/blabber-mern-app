@@ -1,0 +1,6 @@
+textarea {
+  border: none;
+  font-family: Helvetica;
+  height: 5rem;
+  resize: none;
+}

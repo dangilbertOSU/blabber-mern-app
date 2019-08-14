@@ -1,0 +1,22 @@
+.modal {
+  background: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 5;
+}
+
+.modal_content {
+  background-color: white;
+  left: 50%;
+  padding: 2rem;
+  position: fixed;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+}
+
+.invisible {
+  display: none;
+}

@@ -16,7 +16,6 @@ export default function withAuth(ComponentToProtect) {
       fetch('/checkToken')
         .then(res => {
           if (res.status === 200) {
-            console.log(res);
             this.setState({ loading: false });
             res.json()
             .then(result => this.setState({ user: result.username }));

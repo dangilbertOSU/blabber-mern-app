@@ -1,3 +1,4 @@
+import Button from '../button/index';
 import React, { useState } from 'react';
 import userGetterSetter from '../userGetterSetter/index';
 import './login.css';
@@ -48,7 +49,7 @@ export const Login = (props) => {
   };
 
   return (
-    <form onSubmit={ handleSubmit }>
+    <form class="form" onSubmit={ handleSubmit }>
       <section>
         <input
           type="text"
@@ -67,8 +68,8 @@ export const Login = (props) => {
       </section>
       <br/>
       <section>
-        <button type="submit" className="PrimaryButton">Login</button>
-        {/*<p>Don't have an account? <a href="/register">click here to register</a></p>*/}
+        <Button type="submit" variant="primary">Login</Button>
+        <p>Don't have an account? <a href="/register">click here to register</a></p>
       </section>
     </form>
   );

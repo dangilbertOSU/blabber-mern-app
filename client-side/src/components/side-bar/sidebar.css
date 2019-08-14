@@ -1,17 +1,41 @@
-.arrow {
-  margin-top: 50vh;
-  padding: 10px;
-  position: absolute;
-  right: 0;
-}
-
 .sidebar {
   background-color: #F7F7F7;
-  height: 100vh;
+  border-right: 1px solid #979797;
   left: 0;
-  padding: 10px;
-  padding-top: 10%;
-  position: fixed;
   top: 0;
-  width: 20vw;
+  transition: all 0.2s;
+}
+
+.content {
+  display: inline-block;
+  padding: 0.6rem;
+  position: relative;
+  padding-left: 2rem;
+}
+
+.expanded {
+  margin-top: -10px;
+}
+
+.dissolve {
+  display: none;
+}
+
+.sidebar button {
+  width: 7rem;
+}
+
+.arrow {
+  cursor: pointer;
+  position: absolute;
+  margin-right: 1rem;
+  margin-top: 5rem;
+  right: 0;
+  top: 0;
+  transform: rotate(-90deg);
+  transition: all 0.2s;
+}
+
+.rotated {
+  transform: rotate(180deg);
 }

@@ -1,75 +1,56 @@
-import Container from '../container/index';
-import Header from '../header/index';
-import React from 'react';
-import Sidebar from '../side-bar/index';
 import Button from '../button/index';
+import CreatePage from '../create-page/index';
+import ListPages from '../list-pages/index';
+import Modal from '../modal/index';
+import React, { useEffect, useState } from 'react';
+import Sidebar from '../side-bar/index';
+import Spinner from '../spinner/index';
+import { callBackendAPI } from '../list-pages/load-page-data';
+
+import './main.css';
+
+//(event) => addPage(event, props)
 
 const Main = (props) => {
 
-  const generatePageId = () => {
-    return Math.random()
-               .toString(36)
-               .substring(2, 15) + Math.random()
-               .toString(36)
-               .substring(2, 15);
-  };
+  const [pages, setPages] = useState();
+  const [loaded, setLoaded] = useState(false);
+  const [visible, setVisible] = useState(false);
 
-  const getDate = () => {
-    let today = new Date();
-    const dd = String(today.getDate()).padStart(2, '0');
-    const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    const yyyy = today.getFullYear();
-    today = mm + '/' + dd + '/' + yyyy;
+  const { user } = props;
 
-    return today;
-  };
+  useEffect(() => {
+    if (props.user !== null) {
+      callBackendAPI(props.user)
+        .then(res => {
+          setPages(res);
+          setLoaded(true);
+        })
+        .catch(err => console.log(err));
 
-  const addPage = async(event) => {
-    event.preventDefault();
-    console.log('clicked');
-
-    const pageId = generatePageId();
-    const date = getDate();
-
-    const pageObj = {
-                      username: props.user,
-                      page: {
-                        page: {
-                          id: pageId,
-                          date_created: date,
-                          contents: {},
-                        },
-                      },
-                    };
-
-    await fetch('/api/addPage', {
-        method: 'POST', // *GET, POST, PUT, DELETE, etc.
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(pageObj), // body data type must match "Content-Type" header
-      })
-      .then((res) => console.log(res))
-      .then((data) =>  console.log(data))
-      .catch((err)=> console.log(err));
-
-    console.log(pageObj);
-  };
+      document.title = `${props.user} | blabber.`;
+    }
+  }, [props.user]);
 
   return (
       <React.Fragment>
-        <Header/>
         <div>
           <Sidebar>
             <Button
               variant="transparent"
-              onClick={(event) => addPage(event)}
+              onClick={() => setVisible(!visible)}
             >
               add page
             </Button>
           </Sidebar>
-          <Container>
-            <p>{props.user}</p>
-          </Container>
+            <div className="pages_container">
+              {loaded ? <ListPages user={user} pages={pages}/> : <Spinner/>}
+            </div>
         </div>
+        {/* modal */}
+        <Modal visible={visible}>
+          <CreatePage visible={visible} setVisible={setVisible} user={user}/>
+        </Modal>
       </React.Fragment>
   );
 };

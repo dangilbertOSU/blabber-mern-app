@@ -1,0 +1,19 @@
+.spinner {
+  animation: rotate 1.4s linear infinite;
+  -webkit-animation: rotate 1.4s linear infinite;
+  -moz-animation: rotate 1.4s linear infinite;
+  width:174px;
+  height:174px;
+  position: relative;
+}
+
+.path {
+  stroke-dasharray: 170;
+  stroke-dashoffset: 20;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
