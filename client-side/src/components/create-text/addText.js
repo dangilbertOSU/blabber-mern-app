@@ -1,6 +1,6 @@
 import { generatePageId } from '../generateId/index';
 
-export const addText = async(information) => {
+export const addText = async(information, callback) => {
 
   const textId = generatePageId();
 
@@ -26,12 +26,12 @@ export const addText = async(information) => {
                   };
 
   await fetch('/api/addText', {
-      method: 'POST', // *GET, POST, PUT, DELETE, etc.
+      method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(textObj), // body data type must match "Content-Type" header
+      body: JSON.stringify(textObj),
     })
-    .then((res) => null)
+    .then((res) => window.location.reload())
     .catch((err)=> console.log(err));
 
-  console.log(textObj);
+  callback();
 };

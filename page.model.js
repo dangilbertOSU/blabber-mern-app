@@ -1,12 +1,10 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 const ObjectId = require('mongodb').ObjectID;
+const Schema = mongoose.Schema;
 
 let Comment = new Schema({
-  comment: { type: String },
-  date: { type: Date, default: Date.now },
   id: { type: ObjectId, required: true },
-  name: { type: String },
+  comment: { type: String },
   replies: [this],
 });
 
@@ -33,9 +31,4 @@ let Page = new Schema({
   comments: [Comment]
 });
 
-let Post = new Schema({
-  username: { type: String },
-  pages: [Page],
-});
-
-module.exports = mongoose.model('Post', Post);
+module.exports = mongoose.model('Page', Page);

@@ -30,7 +30,7 @@ const CreatePage = (props) => {
 
     const user = props.user;
     const information = { user, title, description };
-    await addPage(information);
+    await addPage(information, window.location.reload());
   };
 
   const handleChange = (event) => {

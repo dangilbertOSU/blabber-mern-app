@@ -42,18 +42,16 @@ const UserPage = (props) => {
         <div className='list_pages'>
           {
             (pages && pages.length > 0) ? (
-              pages.map((item, index) => {
-                const { title, description, page_id } = item.page;
+              pages.map((page, index) => {
+                const { title, description, _id } = page;
 
                 return (
-                  <React.Fragment>
+                  <Link to={`/users/${usernameState}/pages/${_id}`}>
                     <div className="page_item">
-                      <Link to={`/users/${usernameState}/pages/${page_id}`}>
-                        <p className="page_item_title">{title}</p>
-                      </Link>
+                      <p className="page_item_title">{title}</p>
                       <p>{description}</p>
                     </div>
-                  </React.Fragment>
+                  </Link>
                 );
               })
             ) : <p>{errorMessage}</p>

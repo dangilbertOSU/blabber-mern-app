@@ -1,5 +1,5 @@
 a {
-  color: #A62139;
+  color: #77338A;
 }
 
 .form {
@@ -9,13 +9,13 @@ a {
   width: 20rem;
 }
 
-input, label {
+.form input, label {
     display:block;
 }
 
-input {
+.form input {
   border: none;
-  border-bottom: 2px solid #A62139;
+  border-bottom: 1px solid #45214F;
   color: black;
   font-size: 1rem;
   padding: 10px 10px 2px 0px;

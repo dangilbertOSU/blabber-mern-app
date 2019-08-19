@@ -1,6 +1,9 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
+const blacklist = require('express-jwt-blacklist');
 const bodyParser = require('body-parser');
+const jwt = require('jsonwebtoken');
+const secret = 'allyouneedisfudge';
 const path = require('path');
 const passport = require('passport');
 const passportLocal = require('passport-local');
@@ -15,6 +18,17 @@ const mongoPassword = process.env.mongoPass;
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'client-side/build')));
 app.use(cookieParser());
+
+// app.use(jwt({
+//   secret: 'allyouneedisfudge',
+//   isRevoked: blacklist.isRevoked
+// }));
+
+app.get('/logout', (req, res) => {
+  jwt.sign({
+    exp: Date.now()
+  }, 'allyouneedisfudge');
+});
 
 // Cookie parser
 const authorize = require('./server-modules/handle-authorization.js');
@@ -43,6 +57,9 @@ require('./server-modules/handle-load-posts.js')(app);
 
 // Add Page
 require('./server-modules/handle-add-page.js')(app);
+
+// Add Comment
+require('./server-modules/handle-add-comment.js')(app);
 
 // Add Post
 require('./server-modules/handle-add-post.js')(app);

@@ -11,18 +11,16 @@ const ListPages = (props) => {
       {
         (pages.length > 0) ? (
           pages.map((item, index) => {
-            const { title, description, page_id } = item.page;
+            const { title, description, _id } = item;
             const { user } = props;
 
             return (
-              <React.Fragment>
+              <Link to={`/users/${user}/editpage/${_id}`}>
                 <div className="page_item">
-                  <Link to={`/users/${user}/editpage/${page_id}`}>
-                    <p className="page_item_title">{title}</p>
-                  </Link>
+                  <p className="page_item_title">{title}</p>
                   <p>{description}</p>
                 </div>
-              </React.Fragment>
+              </Link>
             );
           })
         ) : null

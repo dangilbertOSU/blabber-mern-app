@@ -8,10 +8,10 @@ loadSinglePage = (app) => {
       Post.findOne({ username: username }, (err, user) => {
         if (err) console.log(err);
         if (user) {
-          const pages = user.pages.toJSON();
-          pages.map((page, index) => {
-            if (page.page.page_id === pageid) {
-              res.status(200).json(page.page);
+          user.pages.map((page, index) => {
+            if (page._id.toString() === pageid) {
+              const pageObj = { page: page, username: username };
+              res.status(200).json(pageObj);
             }
           });
         }

@@ -9,8 +9,6 @@ import { callBackendAPI } from '../list-pages/load-page-data';
 
 import './main.css';
 
-//(event) => addPage(event, props)
-
 const Main = (props) => {
 
   const [pages, setPages] = useState();
@@ -32,6 +30,10 @@ const Main = (props) => {
     }
   }, [props.user]);
 
+  const styles = {
+    textAlign: 'center',
+  };
+
   return (
       <React.Fragment>
         <div>
@@ -43,7 +45,7 @@ const Main = (props) => {
               add page
             </Button>
           </Sidebar>
-            <div className="pages_container">
+            <div className="pages_container" style={loaded ? null : styles}>
               {loaded ? <ListPages user={user} pages={pages}/> : <Spinner/>}
             </div>
         </div>

@@ -68,7 +68,7 @@ export const Login = (props) => {
       </section>
       <br/>
       <section>
-        <Button type="submit" variant="primary">Login</Button>
+        <Button type="submit" variant="primary">login</Button>
         <p>Don't have an account? <a href="/register">click here to register</a></p>
       </section>
     </form>

@@ -1,12 +1,20 @@
 import Button from '../button/index';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import './header.css';
 
 const Header = (props) => {
 
-  const LogoutButton = <Button variant="secondary" href="/login">log out</Button>;
-  /* const LoginButton = <Button variant="secondary" href="/login">log in</Button>; */
+  const [currentUser, setCurrentUser] = useState();
+
+  useEffect(() => {
+    setCurrentUser(props.user);
+  }, [props.user]);
+
+  console.log('props.user: ', currentUser);
+
+  const LogoutButton = <Button variant="secondary" href="/logout">log out</Button>;
+  const LoginButton = <Button variant="secondary" href="/login">log in</Button>;
 
   return (
       <div className="header">
@@ -17,7 +25,7 @@ const Header = (props) => {
         </div>
         <div className="header_right header_list">
           <ul>
-            <li>{LogoutButton}</li>
+            <li>{currentUser ? LogoutButton : LoginButton }</li>
           </ul>
         </div>
       </div>

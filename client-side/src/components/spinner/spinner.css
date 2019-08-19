@@ -2,8 +2,6 @@
   animation: rotate 1.4s linear infinite;
   -webkit-animation: rotate 1.4s linear infinite;
   -moz-animation: rotate 1.4s linear infinite;
-  width:174px;
-  height:174px;
   position: relative;
 }
 

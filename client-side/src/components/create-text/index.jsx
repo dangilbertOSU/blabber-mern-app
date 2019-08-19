@@ -30,7 +30,7 @@ const CreateText = (props) => {
     const pageId = window.location.pathname.replace(`/users/${user}/editpage/`, '');
     const information = { user, textValue, pageId };
 
-    addText(information);
+    addText(information, window.location.reload());
     setTextValue('');
     setVisible(!visible);
   };

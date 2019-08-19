@@ -6,10 +6,10 @@ loadUserPages = (app) => {
     const { username } = req.params;
 
     if (username !== 'null') {
-      Post.findOne({ username: username }, (err, pages) => {
+      Post.findOne({ username: username }, (err, user) => {
         if (err) console.log(err);
-        if (pages) {
-          res.json(pages.pages);
+        if (user) {
+          res.json(user.pages);
         } else {
           res.status(404).json({ message: `No page data found for user ${username}` });
         }

@@ -10,11 +10,13 @@ const Modal = (props) => {
   } = props;
 
   return (
-    <div className={visible ? 'modal' : 'invisible'} {...rest}>
-      <div className={visible ? 'modal_content' : 'invisible'}>
+    visible ?
+    <div className="modal" {...rest}>
+      <div className="modal_content">
         {children}
       </div>
     </div>
+    : null
   );
 };
 

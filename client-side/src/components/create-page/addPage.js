@@ -1,23 +1,19 @@
-import { generatePageId } from '../generateId/index';
 import { getDate } from '../generateDate/index';
 
-export const addPage = async(information) => {
+export const addPage = async(information, callback) => {
 
-  const pageId = generatePageId();
   const date = getDate();
 
   const { user, title, description } = information;
+  const emptyObject = {};
 
   const pageObj = {
                     username: user,
                     page: {
-                      page: {
-                        page_id: pageId,
-                        title: title,
-                        description: description,
-                        date_created: date,
-                        contents: {},
-                      },
+                      title: title,
+                      description: description,
+                      date_created: date,
+                      contents: emptyObject,
                     },
                   };
 
@@ -28,4 +24,6 @@ export const addPage = async(information) => {
     })
     .then((res) => null)
     .catch((err)=> console.log(err));
+
+  callback();
 };
