@@ -45,7 +45,7 @@ const Page = (props) => {
       loaded ? (
         <div className={className} {...rest}>
           {
-            page.contents.component.map((component, index) => {
+            page.contents.map((component, index) => {
               return (
                 <Draggable
                   defaultPosition={{ x: component.position.x, y: component.position.y }}
@@ -61,7 +61,7 @@ const Page = (props) => {
               );
             })
           }
-          <CommentSection id={id} page={page}/>
+          <CommentSection id={id} page={page} user={user}/>
         </div>
       ) : (<Spinner/>)
   );

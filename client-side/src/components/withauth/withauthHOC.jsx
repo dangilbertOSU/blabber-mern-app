@@ -18,7 +18,10 @@ export default function withAuth(ComponentToProtect) {
           if (res.status === 200) {
             this.setState({ loading: false });
             res.json()
-            .then(result => this.setState({ user: result.username }));
+            .then(result => {
+              console.log(result);
+              this.setState({ user: result.username });
+            });
           } else {
             const error = new Error(res.error);
             throw error;

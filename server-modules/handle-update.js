@@ -5,15 +5,14 @@ let Post = require('../post.model.js');
 
 updatePost = (app) => {
   app.put('/api/update', (req, res) => {
-    req.body.map((object) => {
-      Post.findOneAndUpdate({ _id: object.id },
-      {
-        x: object.x,
-        y: object.y,
-        width: object.width,
-        height: object.height,
-      }, (err, result) => {
-        (err === null) ? console.log('updated') : console.log(err);
+
+    const array = req.body;
+    array.map((item, index) => {
+      console.log(item._id);
+      console.log(item.changes);
+      Post.updateOne({ 'contents._id': item._id },
+      { $push: { 'contents.$': item.changes } }, (err, result) => {
+        err ? console.log(err) : console.log(result);
       });
     });
 

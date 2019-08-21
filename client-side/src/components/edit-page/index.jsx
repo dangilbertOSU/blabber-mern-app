@@ -45,7 +45,7 @@ const Page = (props) => {
           const { title, contents, _id } = res.page;
           setCurrentUser(username);
           document.title = `${title} | blabber.`;
-          contents ? setComponents(contents.component) : setErrorMessage('No Data');
+          contents ? setComponents(contents) : setErrorMessage('No Data');
           setId(_id);
           setLoaded(true);
         })
@@ -57,20 +57,18 @@ const Page = (props) => {
   const saveChanges = async (event) => {
     event.preventDefault();
 
-    await console.log(changes);
-
-    // await fetch('/api/update', {
-    //     method: 'PUT',
-    //     mode: 'cors',
-    //     cache: 'no-cache',
-    //     credentials: 'same-origin',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     redirect: 'follow',
-    //     referrer: 'no-referrer',
-    //     body: JSON.stringify(this.state.changes),
-    //   }).then((res) => null)
-    // .then((data) => null)
-    // .catch((err)=> console.log(err));
+    await fetch('/api/update', {
+        method: 'PUT',
+        mode: 'cors',
+        cache: 'no-cache',
+        credentials: 'same-origin',
+        headers: { 'Content-Type': 'application/json' },
+        redirect: 'follow',
+        referrer: 'no-referrer',
+        body: JSON.stringify(changes),
+      }).then((res) => null)
+    .then((data) => null)
+    .catch((err)=> console.log(err));
 
     //window.location.reload();
   };

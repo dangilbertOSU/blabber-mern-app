@@ -5,7 +5,6 @@ export const addPage = async(information, callback) => {
   const date = getDate();
 
   const { user, title, description } = information;
-  const emptyObject = {};
 
   const pageObj = {
                     username: user,
@@ -13,7 +12,6 @@ export const addPage = async(information, callback) => {
                       title: title,
                       description: description,
                       date_created: date,
-                      contents: emptyObject,
                     },
                   };
 

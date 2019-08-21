@@ -14,6 +14,7 @@ const CommentSection = (props) => {
     children,
     id,
     page,
+    user,
     ...rest
   } = props;
 
@@ -55,11 +56,11 @@ const CommentSection = (props) => {
     <React.Fragment>
       <div className={className} {...rest}>
         <AddCommentBox
-          firstValue={nameValue}
+          firstValue={user ? user : nameValue}
           secondValue={commentValue}
           setFirstValue={setNameValue}
           setSecondValue={setCommentValue}
-          firstPlaceHolder="place name here..."
+          firstPlaceHolder={user ? user : 'place name here...'}
           secondPlaceHolder="add comment here..."
           handleSubmit={(event) => handleSubmit(event)}
         />

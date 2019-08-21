@@ -4,6 +4,7 @@ import EditPage from './components/edit-page/index';
 import FourOhFour from './components/404/index';
 import Header from './components/header/index';
 import Login from './components/loginsystem/login';
+import Logout from './components/loginsystem/logout';
 import Register from './components/loginsystem/register';
 import Main from './components/main/main';
 import Page from './components/page/index';
@@ -39,13 +40,14 @@ const App = (props) => {
       <Header user={currentUser}/>
       <Container>
       <Switch>
-        <Route path="/users/:username/pages/:pageid" component={Page}/>
+        <Route path="/users/:username/pages/:pageid" component={() => <Page user={currentUser}/>}/>
         <Route path="/users/:username/editpage/:pageid" component={withAuth(EditPage)}/>
         <Route path="/" exact component={withAuth(Main)} />
         <Route path="/login" component={Login} />
+        <Route path="/logout" component={Logout} />
         <Route path="/register" component={Register} />
         <Route path="/users/:username" component={UserPage}/>
-        <Route component={FourOhFour}/>
+        <Route path="*" component={FourOhFour}/>
       </Switch>
       </Container>
     </BrowserRouter>

@@ -8,7 +8,7 @@ addText = (app) => {
     const { username, pageId, component } = req.body;
 
     Post.updateOne({ 'pages._id': pageId },
-    { $push: { 'pages.$.contents.component': component } }, (err, result) => {
+    { $push: { 'pages.$.contents': component } }, (err, result) => {
       err ? console.log(err) : console.log(result);
     });
 

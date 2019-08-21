@@ -17,7 +17,6 @@ export const Login = (props) => {
   };
 
   const setUserName = (username) => {
-    console.log('called');
     props.setUser(username);
   };
 

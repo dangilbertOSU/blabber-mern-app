@@ -2,8 +2,6 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const blacklist = require('express-jwt-blacklist');
 const bodyParser = require('body-parser');
-const jwt = require('jsonwebtoken');
-const secret = 'allyouneedisfudge';
 const path = require('path');
 const passport = require('passport');
 const passportLocal = require('passport-local');
@@ -19,15 +17,34 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'client-side/build')));
 app.use(cookieParser());
 
-// app.use(jwt({
-//   secret: 'allyouneedisfudge',
-//   isRevoked: blacklist.isRevoked
-// }));
+const jwt = require('jsonwebtoken');
+const secret = 'allyouneedisfudge';
+
+let Token = require('./token.model.js');
 
 app.get('/logout', (req, res) => {
-  jwt.sign({
-    exp: Date.now()
-  }, 'allyouneedisfudge');
+  console.log('called');
+  const token =
+    req.body.token ||
+    req.query.token ||
+    req.headers['x-access-token'] ||
+    req.cookies.token;
+
+  if (!token) {
+    res.status(401).send('Unauthorized: No token provided');
+  } else {
+    jwt.verify(token, secret, (err, decoded) => {
+      if (err) {
+        res.status(401).send('Unauthorized: Invalid token');
+      } else {
+        const tokenDB = new Token({ token: token });
+
+        tokenDB.save((err, result) => {
+          err ? console.log(err) : console.log(result);
+        });
+      }
+    });
+  }
 });
 
 // Cookie parser

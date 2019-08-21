@@ -53,41 +53,22 @@ export default class Sandbox extends Component {
     height = getHeight(height);
 
     let positionObj = {
-                        textId: component.text.textId,
-                        width: width,
-                        height: height,
-                        x: position[0],
-                        y: position[1],
-                      };
-    let changesCopy = this.props.changes;
-
-    changesCopy.map((item, index) => {
-      console.log('item: ', item.textId);
-      if (item.textId === component.text.textId) {
-        changesCopy = changesCopy.splice(index, 4, positionObj);
-        return this.props.setChanges(changesCopy);
-      } else {
-        changesCopy = changesCopy.push(positionObj);
-        return this.props.setChanges(changesCopy);
+      _id: component._id,
+      changes: {
+        position: {
+          x: position[0],
+          y: position[1],
+        },
+        size: {
+          width: width,
+          height: height,
+        }
       }
-    });
+    };
 
+    let changesCopy = this.props.changes;
+    changesCopy.push(positionObj);
     this.props.setChanges(changesCopy);
-  };
-
-  handleDrag = (event, ui) => {
-    event.preventDefault();
-    // if (event.screenY > 325) {
-    //   this.setState({ trashVisible: true });
-    // }
-    //
-    // if (event.screenY >= 405) {
-    //   this.setState({ isHovered: true });
-    // }
-    //
-    // if (event.screenY < 405) {
-    //   this.setState({ isHovered: false });
-    // }
   };
 
   handleStop = (event, component) => {
@@ -101,24 +82,22 @@ export default class Sandbox extends Component {
     height = getHeight(height);
 
     let positionObj = {
-                        textId: component.text.textId,
-                        width: width,
-                        height: height,
-                        x: position[0],
-                        y: position[1],
-                      };
-    let changesCopy = this.props.changes;
-
-    changesCopy.map((item, index) => {
-      console.log('item: ', item.textId);
-      if (item.textId === component.text.textId) {
-        changesCopy = changesCopy.splice(index, 4, positionObj);
-        return this.props.setChanges(changesCopy);
-      } else {
-        changesCopy = changesCopy.push(positionObj);
-        return this.props.setChanges(changesCopy);
+      _id: component._id,
+      changes: {
+        position: {
+          x: position[0],
+          y: position[1],
+        },
+        size: {
+          width: width,
+          height: height,
+        }
       }
-    });
+    };
+
+    let changesCopy = this.props.changes;
+    changesCopy.push(positionObj);
+    this.props.setChanges(changesCopy);
   };
 
   enterEditMode = () => {
@@ -132,7 +111,6 @@ export default class Sandbox extends Component {
         <Draggable
           handle={'.edit-move-handle'}
           onStart={(event) => this.handleStart(event, component)}
-          onDrag={(event) => this.handleDrag(event, component)}
           onStop={(event) => this.handleStop(event, component)}
         >
           <div

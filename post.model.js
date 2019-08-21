@@ -10,26 +10,27 @@ let Comment = new Schema({
   replies: [this],
 });
 
+let Component = new Schema({
+  id: { type: ObjectId, required: true },
+  text: {
+    value: { type: String },
+    id: { type: ObjectId },
+  },
+  position: {
+    x: { type: Number },
+    y: { type: Number },
+  },
+  size: {
+    width: { type: Number },
+    height: { type: Number },
+  },
+});
+
 let Page = new Schema({
   title: { type: String },
   description: { type: String },
-  date_created: { type: String },
-  contents: {
-    component: {
-      text: {
-        value: { type: String },
-        textId: { type: String },
-      },
-      position: {
-        x: { type: Number },
-        y: { type: Number },
-      },
-      size: {
-        width: { type: Number },
-        height: { type: Number },
-      }
-    }
-  },
+  date_created: { type: Date, default: Date.now },
+  contents: [Component],
   comments: [Comment]
 });
 
