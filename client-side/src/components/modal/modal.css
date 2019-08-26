@@ -20,3 +20,11 @@
 .invisible {
   display: none;
 }
+
+@media only screen and (max-width: 600px) {
+  .modal_content {
+    padding-left: 3rem;
+    padding-right: 3rem;
+    width: 90%;
+  }
+}
