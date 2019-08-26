@@ -47,7 +47,7 @@ const App = (props) => {
         <Route path="/logout" component={withAuth(Logout)} />
         <Route path="/register" component={Register} />
         <Route path="/users/:username" component={UserPage}/>
-        <Route path="*" component={FourOhFour}/>
+        <Route component={FourOhFour}/>
       </Switch>
       </Container>
     </BrowserRouter>

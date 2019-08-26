@@ -81,10 +81,6 @@ require('./server-modules/handle-add-comment.js')(app);
 // Add Post
 require('./server-modules/handle-add-post.js')(app);
 
-app.get('/users/:userId', authorize, (req, res) => {
-  res.send(req.params);
-});
-
 // Update Post
 require('./server-modules/handle-update.js')(app);
 
@@ -95,9 +91,11 @@ require('./server-modules/handle-remove-post.js')(app);
 require('./server-modules/handle-upload-photo.js')(app);
 
 // handle * pages
-let pathName = (__dirname + '/client-side/build/index.html');
+let pathName = path.join(__dirname, './client-side/build', 'index.html');
 
-require('./server-modules/handle-other-page-requests.js')(app, pathName);
+app.get('*', (req, res) => {
+  res.sendFile(pathName);
+});
 
 app.listen(port, () => {
   console.log(`Server is listening on port: ${port}`);
