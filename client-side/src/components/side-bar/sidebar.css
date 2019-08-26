@@ -6,8 +6,10 @@
 }
 
 .content {
-  display: inline-block;
-  padding: 0.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  padding-bottom: 0.6rem;
   position: relative;
   padding-left: 1rem;
 }
@@ -22,6 +24,7 @@
 
 .sidebar button {
   margin-right: 1rem;
+  margin-top: 0.6rem;
   width: auto;
 }
 

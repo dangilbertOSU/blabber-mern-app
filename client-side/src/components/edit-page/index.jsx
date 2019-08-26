@@ -54,6 +54,10 @@ const Page = (props) => {
         });
   }, [props.user]);
 
+  const redirect = () => {
+    window.location.replace(`/users/${user}/pages/${id}`);
+  };
+
   const saveChanges = async (event) => {
     event.preventDefault();
 
@@ -98,7 +102,7 @@ const Page = (props) => {
             Save Changes
           </Button> : null
         }
-        <Button href={`/users/${user}/pages/${id}`} variant="transparent">Live Page</Button>
+        <Button variant="transparent" onClick={() => redirect()}>Live Page</Button>
       </Sidebar>
       <Modal visible={textModalOpen} setVisible={setTextModalOpen}>
         <CreateText visible={textModalOpen} setVisible={setTextModalOpen} user={user}/>
