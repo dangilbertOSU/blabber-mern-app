@@ -6,14 +6,27 @@ let Post = require('../post.model.js');
 updatePost = (app) => {
   app.put('/api/update', (req, res) => {
 
-    const array = req.body;
-    array.map((item, index) => {
-      console.log(item._id);
-      console.log(item.changes);
-      Post.updateOne({ 'contents._id': item._id },
-      { $push: { 'contents.$': item.changes } }, (err, result) => {
-        err ? console.log(err) : console.log(result);
-      });
+    const { pageChanges, pageId } = req.body;
+
+    console.log(JSON.stringify(pageChanges));
+
+    pageChanges.map((item, index) => {
+      Post.update({ 'pages._id': pageId },
+        {
+          $set: {
+            'pages.$.contents.$[i].component': item.changes
+          }
+        },
+        {
+          arrayFilters: [
+            {
+              'i._id': item._id
+            }
+          ]
+        }, (err, result) => {
+          err ? console.log('err:', err) : console.log('result: ', result);
+        }
+      );
     });
 
     res.sendStatus(200);

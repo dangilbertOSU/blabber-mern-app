@@ -6,16 +6,18 @@ export const addText = async(information, callback) => {
     username: user,
     pageId: pageId,
     component: {
-      text: {
-        value: textValue,
-      },
-      position: {
-        x: 0,
-        y: 0,
-      },
-      size: {
-        width: 200,
-        height: 200,
+      component: {
+        text: {
+          value: textValue,
+        },
+        position: {
+          x: 0,
+          y: 0,
+        },
+        size: {
+          width: 200,
+          height: 200,
+        }
       }
     }
   };

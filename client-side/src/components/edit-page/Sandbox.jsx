@@ -55,6 +55,9 @@ export default class Sandbox extends Component {
     let positionObj = {
       _id: component._id,
       changes: {
+        text: {
+          value: component.component.text.value
+        },
         position: {
           x: position[0],
           y: position[1],
@@ -84,6 +87,9 @@ export default class Sandbox extends Component {
     let positionObj = {
       _id: component._id,
       changes: {
+        text: {
+          value: component.component.text.value
+        },
         position: {
           x: position[0],
           y: position[1],
@@ -105,7 +111,7 @@ export default class Sandbox extends Component {
   };
 
   createDraggable = (component, index) => {
-    const { text, position, size } = component;
+    const { text, position, size } = component.component;
     if (this.props.editMode) {
       return (
         <Draggable

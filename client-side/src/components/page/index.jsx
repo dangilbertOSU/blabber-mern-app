@@ -48,15 +48,15 @@ const Page = (props) => {
             page.contents.map((component, index) => {
               return (
                 <Draggable
-                  defaultPosition={{ x: component.position.x, y: component.position.y }}
+                  defaultPosition={{ x: component.component.position.x, y: component.component.position.y }}
                   disabled={true}
                   key={index}
                 >
                   <div
                     className='submissions_post'
-                    style={{ width: component.size.width, height: component.size.height }}
+                    style={{ width: component.component.size.width, height: component.component.size.height }}
                   >
-                    <p>{component.text.value}</p>
+                    <p>{component.component.text.value}</p>
                   </div>
                 </Draggable>
               );

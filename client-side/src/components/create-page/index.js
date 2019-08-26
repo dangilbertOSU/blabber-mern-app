@@ -49,6 +49,7 @@ const CreatePage = (props) => {
       <form onSubmit={ handleSubmit }>
         <section>
           <input
+            autoFocus
             type="text"
             name="title"
             value={title}

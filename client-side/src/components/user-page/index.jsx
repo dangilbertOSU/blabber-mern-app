@@ -39,23 +39,25 @@ const UserPage = (props) => {
 
   return (
       loaded ? (
-        <div className='list_pages'>
-          {
-            (pages && pages.length > 0) ? (
-              pages.map((page, index) => {
-                const { title, description, _id } = page;
+        <div className="pages_container">
+          <div className='list_pages'>
+            {
+              (pages && pages.length > 0) ? (
+                pages.map((page, index) => {
+                  const { title, description, _id } = page;
 
-                return (
-                  <Link to={`/users/${usernameState}/pages/${_id}`}>
-                    <div className="page_item">
-                      <p className="page_item_title">{title}</p>
-                      <p>{description}</p>
-                    </div>
-                  </Link>
-                );
-              })
-            ) : <p>{errorMessage}</p>
-          }
+                  return (
+                    <Link to={`/users/${usernameState}/pages/${_id}`}>
+                      <div className="page_item">
+                        <p className="page_item_title">{title}</p>
+                        <p>{description}</p>
+                      </div>
+                    </Link>
+                  );
+                })
+              ) : <p>{errorMessage}</p>
+            }
+          </div>
         </div>
       ) : (<Spinner/>)
   );

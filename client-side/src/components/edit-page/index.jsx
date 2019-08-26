@@ -57,6 +57,10 @@ const Page = (props) => {
   const saveChanges = async (event) => {
     event.preventDefault();
 
+    const reqObj = { pageChanges: changes, pageId: id };
+
+    console.log('changes: ', changes);
+
     await fetch('/api/update', {
         method: 'PUT',
         mode: 'cors',
@@ -65,7 +69,7 @@ const Page = (props) => {
         headers: { 'Content-Type': 'application/json' },
         redirect: 'follow',
         referrer: 'no-referrer',
-        body: JSON.stringify(changes),
+        body: JSON.stringify(reqObj),
       }).then((res) => null)
     .then((data) => null)
     .catch((err)=> console.log(err));
@@ -79,7 +83,12 @@ const Page = (props) => {
       <Sidebar>
         <Button variant="transparent" onClick={() => setTextModalOpen(true)}>Add Text</Button>
         <Button variant="transparent">Upload Photo</Button>
-        <Button variant={editMode ? 'secondary' : 'transparent'} onClick={() => setEditMode(!editMode)}>Edit Mode</Button>
+        <Button
+          variant={editMode ? 'secondary' : 'transparent'}
+          onClick={() => setEditMode(!editMode)}
+        >
+          Edit Mode
+        </Button>
         {
           editMode ?
           <Button

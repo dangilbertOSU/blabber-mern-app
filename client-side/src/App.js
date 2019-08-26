@@ -44,7 +44,7 @@ const App = (props) => {
         <Route path="/users/:username/editpage/:pageid" component={withAuth(EditPage)}/>
         <Route path="/" exact component={withAuth(Main)} />
         <Route path="/login" component={Login} />
-        <Route path="/logout" component={Logout} />
+        <Route path="/logout" component={withAuth(Logout)} />
         <Route path="/register" component={Register} />
         <Route path="/users/:username" component={UserPage}/>
         <Route path="*" component={FourOhFour}/>
