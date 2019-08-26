@@ -39,10 +39,6 @@ hr {
   width: calc( 100% - 3rem );
 }
 
-.comment-section textarea:focus {
-  height: 10rem;
-}
-
 .comment-section-buttons {
   transition: all 1s;
 }

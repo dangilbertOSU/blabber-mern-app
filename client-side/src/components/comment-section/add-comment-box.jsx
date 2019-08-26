@@ -19,10 +19,6 @@ const AddCommentBox = (props) => {
 
   const [visible, setVisible] = useState(false);
 
-  const handleFocus = (event) => {
-    setVisible(true);
-  };
-
   const handleCancel = (event) => {
     event.preventDefault();
     setFirstValue('');
@@ -46,9 +42,10 @@ const AddCommentBox = (props) => {
             name="comment"
             value={secondValue}
             onChange={(event) => setSecondValue(event.target.value)}
-            onFocus={() => handleFocus()}
+            onFocus={() => setVisible(true)}
             placeholder={secondPlaceHolder}
             ref={ref}
+            style={ visible ? { height: '10rem' } : null }
           />
         </section>
         <br/>
