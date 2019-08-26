@@ -27,7 +27,7 @@ const withAuth = (req, res, next) => {
         });
       }
     } else if (tokenFound) {
-      console.log('this token exists in blacklist db: ', token);
+      res.status(401).send('Unauthorized: Invalid token');
     }
   });
 };

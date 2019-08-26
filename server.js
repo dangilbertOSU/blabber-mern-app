@@ -40,7 +40,7 @@ app.get('/logout', (req, res) => {
         const tokenDB = new Token({ token: token });
 
         tokenDB.save((err, result) => {
-          err ? console.log(err) : console.log(result);
+          err ? console.log(err) : res.redirect('/');
         });
       }
     });

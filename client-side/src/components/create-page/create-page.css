@@ -1,3 +1,13 @@
-.create-page-buttons button{
-  margin-top: 20px;
+.create-page-buttons button:not(:first-child) {
+  margin-top: 1rem;
+}
+
+.create-page-form input {
+  font-size: 0.8rem;
+  padding: 0.4rem;
+  width: 95%;
+}
+
+.create-page-form input:not(:last-child) {
+  margin-bottom: 1rem;
 }

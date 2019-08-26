@@ -25,7 +25,8 @@ const CommentSection = (props) => {
 
   useEffect(() => {
     scrollToRef(scroll);
-  }, []);
+    if (user) setNameValue(user);
+  }, [user]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -42,9 +43,9 @@ const CommentSection = (props) => {
     setNameValue('');
   };
 
-  const commentBox = (comment) => {
+  const commentBox = (comment, index) => {
     return (
-      <div className="comment-content">
+      <div className="comment-content" key={index}>
         <p className="comment-content-name">{comment.name}</p>
         <p className="comment-content-comment">{comment.comment}</p>
         <p className="comment-content-date">{comment.date.substring(0, 10)}</p>
@@ -57,6 +58,7 @@ const CommentSection = (props) => {
       <div className={className} {...rest}>
         <AddCommentBox
           firstValue={user ? user : nameValue}
+          disabled={user ? true : false}
           secondValue={commentValue}
           setFirstValue={setNameValue}
           setSecondValue={setCommentValue}
@@ -68,7 +70,7 @@ const CommentSection = (props) => {
           <p>Comments: {page.comments.length}</p>
           {
             page.comments.map((comment, index) => {
-              return commentBox(comment);
+              return commentBox(comment, index);
             })
           }
         </div>

@@ -34,6 +34,7 @@ export const Login = (props) => {
       .then(res => {
         if (res.status === 200) {
           setUserName(username);
+          window.location.href = '/';
           props.history.push('/');
         } else {
           const error = new Error(res.error);

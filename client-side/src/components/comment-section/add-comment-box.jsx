@@ -5,6 +5,7 @@ const AddCommentBox = (props) => {
   const {
     className,
     children,
+    disabled,
     firstValue,
     secondValue,
     setFirstValue,
@@ -33,6 +34,7 @@ const AddCommentBox = (props) => {
       <form onSubmit={handleSubmit}>
         <section className="comment-section-textarea">
           <input
+            disabled={disabled}
             type="text"
             name="name"
             onChange={(event) => setFirstValue(event.target.value)}

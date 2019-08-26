@@ -50,7 +50,7 @@ const Main = (props) => {
             </div>
         </div>
         {/* modal */}
-        <Modal visible={visible}>
+        <Modal visible={visible} setVisible={setVisible}>
           <CreatePage visible={visible} setVisible={setVisible} user={user}/>
         </Modal>
       </React.Fragment>

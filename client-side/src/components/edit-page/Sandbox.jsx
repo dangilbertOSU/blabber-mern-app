@@ -104,7 +104,7 @@ export default class Sandbox extends Component {
     this.setState({ editMode: !this.state.editMode });
   };
 
-  createDraggable = (component) => {
+  createDraggable = (component, index) => {
     const { text, position, size } = component;
     if (this.props.editMode) {
       return (
@@ -112,6 +112,7 @@ export default class Sandbox extends Component {
           handle={'.edit-move-handle'}
           onStart={(event) => this.handleStart(event, component)}
           onStop={(event) => this.handleStop(event, component)}
+          key={index}
         >
           <div
             className='submissions_post_edit_mode'
@@ -127,6 +128,7 @@ export default class Sandbox extends Component {
         <Draggable
           defaultPosition={{ x: position.x, y: position.y }}
           disabled={true}
+          key={index}
         >
           <div className='submissions_post' style={{ width: size.width, height: size.height }}>
             <p>{text.value}</p>
@@ -154,7 +156,7 @@ export default class Sandbox extends Component {
         {
           this.props.components.map((component, index) => {
             return (
-              this.createDraggable(component)
+              this.createDraggable(component, index)
             );
           })
         }

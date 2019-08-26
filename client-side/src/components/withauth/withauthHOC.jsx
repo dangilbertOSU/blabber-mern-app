@@ -16,14 +16,14 @@ export default function withAuth(ComponentToProtect) {
       fetch('/checkToken')
         .then(res => {
           if (res.status === 200) {
-            this.setState({ loading: false });
             res.json()
             .then(result => {
-              console.log(result);
               this.setState({ user: result.username });
+              this.setState({ loading: false });
             });
           } else {
             const error = new Error(res.error);
+            this.setState({ loading: false, redirect: true });
             throw error;
           }
         })
@@ -46,7 +46,7 @@ export default function withAuth(ComponentToProtect) {
 
       return (
         <React.Fragment>
-          <ComponentToProtect user={this.state.user}{...this.props} />
+          <ComponentToProtect user={this.state.user} {...this.props} />
         </React.Fragment>
       );
     }

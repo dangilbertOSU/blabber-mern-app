@@ -50,6 +50,7 @@ const Page = (props) => {
                 <Draggable
                   defaultPosition={{ x: component.position.x, y: component.position.y }}
                   disabled={true}
+                  key={index}
                 >
                   <div
                     className='submissions_post'

@@ -29,6 +29,7 @@ const Logout = (props) => {
   return (
     <div className={className} {...rest}>
       <p>You've been logged out</p>
+      <a href='/login'>Click here to log back in.</a>
     </div>
   );
 };

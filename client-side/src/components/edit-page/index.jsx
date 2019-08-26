@@ -70,7 +70,7 @@ const Page = (props) => {
     .then((data) => null)
     .catch((err)=> console.log(err));
 
-    //window.location.reload();
+    window.location.reload();
   };
 
   return (
@@ -91,7 +91,7 @@ const Page = (props) => {
         }
         <Button href={`/users/${user}/pages/${id}`} variant="transparent">Live Page</Button>
       </Sidebar>
-      <Modal visible={textModalOpen}>
+      <Modal visible={textModalOpen} setVisible={setTextModalOpen}>
         <CreateText visible={textModalOpen} setVisible={setTextModalOpen} user={user}/>
       </Modal>
       { errorMessage ? <p>{errorMessage}</p> : (

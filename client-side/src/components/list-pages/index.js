@@ -15,7 +15,7 @@ const ListPages = (props) => {
             const { user } = props;
 
             return (
-              <Link to={`/users/${user}/editpage/${_id}`}>
+              <Link to={`/users/${user}/editpage/${_id}`} key={index}>
                 <div className="page_item">
                   <p className="page_item_title">{title}</p>
                   <p>{description}</p>
