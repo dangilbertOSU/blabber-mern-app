@@ -2,6 +2,8 @@ import Draggable from 'react-draggable';
 import React, { Component } from 'react';
 import { getPosition, getHeight, getWidth } from './getFunctions.js';
 
+import './sandbox.css';
+
 export default class Sandbox extends Component {
 
   constructor(props) {
@@ -163,16 +165,13 @@ export default class Sandbox extends Component {
   };
 
   render() {
-
     return (
-      <div>
-        {
-          this.props.components.map((component, index) => {
+      <div className="page-content">
+        {this.props.components.map((component, index) => {
             return (
               this.createDraggable(component, index)
             );
-          })
-        }
+          })}
       </div>
     );
   }

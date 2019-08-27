@@ -29,6 +29,7 @@ ul {
   position: relative;
   transform: translateY(50px);
   transition: all 0.2s ease-out;
+  white-space: pre-line;
   width: min-content;
   z-index: 2;
 }
@@ -42,6 +43,7 @@ ul {
   resize: both;
   transform: translateY(50px);
   transition: all 0.2s ease-out;
+  white-space: pre-line;
   width: min-content;
   z-index: 2;
 }
