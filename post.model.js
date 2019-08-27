@@ -15,6 +15,9 @@ let Component = new Schema({
       value: { type: String },
       id: { type: ObjectId },
     },
+    url: {
+      value: { type: String },
+    },
     position: {
       x: { type: Number },
       y: { type: Number },

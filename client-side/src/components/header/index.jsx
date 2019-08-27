@@ -11,8 +11,8 @@ const Header = (props) => {
     setCurrentUser(props.user);
   }, [props.user]);
 
-  const LogoutButton = <Button variant="secondary" href="/logout">log out</Button>;
-  const LoginButton = <Button variant="secondary" href="/login">log in</Button>;
+  const LogoutButton = <Button variant="secondary" href="/logout">logout</Button>;
+  const LoginButton = <Button variant="secondary" href="/login">login</Button>;
 
   return (
       <div className="header">

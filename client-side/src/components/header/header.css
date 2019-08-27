@@ -34,6 +34,6 @@
 }
 
 .button {
-  padding-left: 3rem;
-  padding-right: 3rem;
+  max-width: 10rem;
+  min-width: 8rem;
 }

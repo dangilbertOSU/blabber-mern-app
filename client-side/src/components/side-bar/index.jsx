@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './sidebar.css';
-import Arrow from '../arrow/index';
 
 const Sidebar = (props) => {
   const {
@@ -16,16 +15,12 @@ const Sidebar = (props) => {
       <div className={expanded ? 'content dissolve' : 'content'}>
         {children}
       </div>
-        <Arrow
-          className={expanded ? 'arrow rotated' : 'arrow'}
+        <div
+          className="sidebar-expander"
           onClick={() => setExpanded(!expanded)}
         />
     </div>
   );
 };
-
-// Sidebar.defaultProps = {
-//   className: 'sidebar',
-// };
 
 export default Sidebar;

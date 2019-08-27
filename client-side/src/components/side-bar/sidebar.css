@@ -28,15 +28,10 @@
   width: auto;
 }
 
-.arrow {
-  cursor: pointer;
-  position: absolute;
-  margin-right: 3rem;
-  margin-top: 5.5rem;
-  right: 0;
-  top: 0;
-  transform: rotate(-90deg);
-  transition: all 0.2s;
+.sidebar-expander {
+  background-color: lightgray;
+  height: 1rem;
+  width: 100%;
 }
 
 .rotated {
