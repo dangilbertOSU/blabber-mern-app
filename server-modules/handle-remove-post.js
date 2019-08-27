@@ -5,6 +5,7 @@ let Post = require('../post.model.js');
 
 removePost = (app) => {
   app.post('/api/delete', (req, res) => {
+    console.log('req.body: ', req.body);
     let post = new Post(req.body);
     post.remove()
       .then(post => {

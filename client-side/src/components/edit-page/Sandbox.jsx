@@ -15,28 +15,20 @@ export default class Sandbox extends Component {
   }
 
   deleteEntry = async (post) => {
-    if (window.confirm('Press OK to confirm.')) console.log('deleted');
-
-    //   let postsArrayCopy = this.state.posts.slice();
-    //   let index = postsArrayCopy.indexOf(post);
-    //   if (index !== -1) {
-    //     postsArrayCopy.splice(index, 1);
-    //     this.setState({ posts: postsArrayCopy });
-    //   }
-    //
-    //   await fetch('/api/delete', {
-    //       method: 'POST',
-    //       mode: 'cors',
-    //       cache: 'no-cache',
-    //       credentials: 'same-origin',
-    //       headers: { 'Content-Type': 'application/json' },
-    //       redirect: 'follow',
-    //       referrer: 'no-referrer',
-    //       body: JSON.stringify(post),
-    //     }).then((res) => null)
-    //   .then((data) =>  null)
-    //   .catch((err)=> console.log(err));
-    // }
+    if (window.confirm('Press OK to confirm.')) {
+      await fetch('/api/delete', {
+          method: 'POST',
+          mode: 'cors',
+          cache: 'no-cache',
+          credentials: 'same-origin',
+          headers: { 'Content-Type': 'application/json' },
+          redirect: 'follow',
+          referrer: 'no-referrer',
+          body: JSON.stringify(post),
+        }).then((res) => null)
+      .then((data) =>  null)
+      .catch((err)=> console.log(err));
+    };
   };
 
   handleSubmit = (event) => {
@@ -77,13 +69,18 @@ export default class Sandbox extends Component {
   handleDrag = (event, component) => {
     event.preventDefault();
 
-    if (event.screenY < -121) {
-      console.log('Deleted');
-    }
+    // if (event.screenY < -121) {
+    //   console.log('Deleted');
+    // }
   };
 
   handleStop = (event, component) => {
     event.preventDefault();
+
+    // if (event.screenY < -121) {
+    //   this.deleteEntry(component);
+    // }
+
     let string = event.target.offsetParent.attributes.style.value;
 
     let { height, width } = event.target.offsetParent.attributes.style.ownerElement.style;
@@ -123,6 +120,7 @@ export default class Sandbox extends Component {
     if (this.props.editMode) {
       return (
         <Draggable
+          bounds="parent"
           handle={'.edit-move-handle'}
           onDrag={(event) => this.handleDrag(event, component)}
           onStart={(event) => this.handleStart(event, component)}
