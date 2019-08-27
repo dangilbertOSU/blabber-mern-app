@@ -74,6 +74,14 @@ export default class Sandbox extends Component {
     this.props.setChanges(changesCopy);
   };
 
+  handleDrag = (event, component) => {
+    event.preventDefault();
+
+    if (event.screenY < -121) {
+      console.log('Deleted');
+    }
+  };
+
   handleStop = (event, component) => {
     event.preventDefault();
     let string = event.target.offsetParent.attributes.style.value;
@@ -116,6 +124,7 @@ export default class Sandbox extends Component {
       return (
         <Draggable
           handle={'.edit-move-handle'}
+          onDrag={(event) => this.handleDrag(event, component)}
           onStart={(event) => this.handleStart(event, component)}
           onStop={(event) => this.handleStop(event, component)}
           key={index}

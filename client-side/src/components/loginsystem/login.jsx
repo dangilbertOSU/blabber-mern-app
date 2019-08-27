@@ -70,6 +70,8 @@ export const Login = (props) => {
       <section>
         <Button type="submit" variant="primary">login</Button>
         <p>Don't have an account? <a href="/register">click here to register</a></p>
+        <br/>
+        <a href="/forgotpasssword">forgot password?</a>
       </section>
     </form>
   );

@@ -15,8 +15,8 @@ export const addText = async(information, callback) => {
           y: 0,
         },
         size: {
-          width: 200,
-          height: 200,
+          width: 100,
+          height: 100,
         }
       }
     }
