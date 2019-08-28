@@ -21,6 +21,7 @@ a {
   background: transparent;
   cursor: pointer;
   font-size: 1rem;
+  padding: 0;
   text-decoration: underline;
 }
 
@@ -32,11 +33,12 @@ a {
   background-color: white;
   border: none;
   border-bottom: 1px solid #b6b6b6;
+  box-sizing : border-box;
   color: black;
   font-size: 1rem;
   padding: 10px 10px 2px 0px;
   margin-bottom: 10px;
-  width: 310px;
+  width: 100%;
 }
 
 .form input:focus {

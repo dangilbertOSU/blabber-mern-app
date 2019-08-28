@@ -71,7 +71,14 @@ export const Login = (props) => {
         <br/>
         <section>
           <Button type="submit" variant="primary">register</Button>
-          <p>Already have an account? <button  className="flipper-button" onClick={(e) => handleClick(e)}>click here to login.</button></p>
+          <p>Already have an account?
+            <button
+              className="flipper-button"
+              onClick={(e) => handleClick(e)}
+            >
+              click here to login.
+            </button>
+          </p>
         </section>
       </form>
     </div>

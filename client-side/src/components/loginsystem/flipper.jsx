@@ -11,7 +11,8 @@ const Flipper = (props) => {
   const [flipped, setFlipped] = useState(false);
 
   return (
-    <div className={flipped ? 'flip flip-container' : 'flip-container'} ontouchstart="this.classList.toggle('hover');">
+    <div
+      className={flipped ? 'flip flip-container' : 'flip-container'}>
       <div className={className}>
         <div className="front">
           <Register setFlipped={setFlipped} flipped={flipped}/>
