@@ -59,14 +59,14 @@ export const Login = (props) => {
             name="username"
             value={username}
             onChange={handleChange}
-            placeholder="username"/>
+            placeholder="set your username"/>
           <label for="password">password</label>
           <input
             type="password"
             name="password"
             value={password}
             onChange={handleChange}
-            placeholder="password"/>
+            placeholder="set your password"/>
         </section>
         <br/>
         <section>
