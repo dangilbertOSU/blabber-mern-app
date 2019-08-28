@@ -35,9 +35,12 @@ const App = (props) => {
       });
   }, []);
 
+  const handleHomeClick = () => {
+    window.location.href = '/';
+  };
+
   return (
     <BrowserRouter>
-      <Header user={currentUser}/>
       <Container>
       <Switch>
         <Route path="/users/:username/pages/:pageid" component={() => <Page user={currentUser}/>}/>

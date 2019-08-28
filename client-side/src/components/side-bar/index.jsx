@@ -15,10 +15,6 @@ const Sidebar = (props) => {
       <div className={expanded ? 'content dissolve' : 'content'}>
         {children}
       </div>
-        <div
-          className="sidebar-expander"
-          onClick={() => setExpanded(!expanded)}
-        />
     </div>
   );
 };

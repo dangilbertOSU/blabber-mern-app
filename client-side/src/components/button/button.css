@@ -3,8 +3,8 @@ a {
 }
 
 .button {
-  cursor: pointer;
-  border-radius: 6px;
+  border-radius: 1rem;
+  cursor: url('../../cursor.svg'), auto;
   font-size: 0.8rem;
   font-weight: lighter;
   padding: 0.4rem;
@@ -25,7 +25,7 @@ a {
 
 .secondary {
   background-color: white;
-  border: 1px solid #45214F;
+  border: none;
   color: #77338A;
 }
 

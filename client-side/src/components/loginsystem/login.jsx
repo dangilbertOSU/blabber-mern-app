@@ -49,31 +49,36 @@ export const Login = (props) => {
   };
 
   return (
-    <form class="form" onSubmit={ handleSubmit }>
-      <section>
-        <input
-          type="text"
-          name="username"
-          value={username}
-          onChange={handleChange}
-          placeholder="username"
-        />
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handleChange}
-          placeholder="password"
-        />
-      </section>
-      <br/>
-      <section>
-        <Button type="submit" variant="primary">login</Button>
-        <p>Don't have an account? <a href="/register">click here to register</a></p>
+    <div className="form">
+      <form onSubmit={ handleSubmit }>
+        <h1>login</h1>
+        <section>
+          <label for="username">username</label>
+          <input
+            type="text"
+            name="username"
+            value={username}
+            onChange={handleChange}
+            placeholder="type your username"
+          />
+          <label for="password">password</label>
+          <input
+            type="password"
+            name="password"
+            value={password}
+            onChange={handleChange}
+            placeholder="type your password"
+          />
+          <a href="/forgotpasssword" className="forgot-password">forgot password?</a>
+        </section>
         <br/>
-        <a href="/forgotpasssword">forgot password?</a>
-      </section>
-    </form>
+        <section>
+          <Button type="submit" variant="primary">login</Button>
+          <p>Don't have an account? <a href="/register">click here to register</a></p>
+          <br/>
+        </section>
+      </form>
+    </div>
   );
 };
 

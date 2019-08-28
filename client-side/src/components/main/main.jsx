@@ -30,6 +30,10 @@ const Main = (props) => {
     }
   }, [props.user]);
 
+  const logout = () => {
+    window.location.href = '/logout';
+  };
+
   const styles = {
     textAlign: 'center',
   };
@@ -42,7 +46,13 @@ const Main = (props) => {
               variant="transparent"
               onClick={() => setVisible(!visible)}
             >
-              add page
+              Add Page
+            </Button>
+            <Button
+              variant="transparent"
+              onClick={() => logout()}
+            >
+              Logout
             </Button>
           </Sidebar>
             <div className="pages_container" style={loaded ? null : styles}>

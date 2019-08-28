@@ -54,8 +54,8 @@ const Page = (props) => {
         });
   }, [props.user]);
 
-  const redirect = () => {
-    window.location.replace(`/users/${user}/pages/${id}`);
+  const redirect = (path) => {
+    window.location.href = path;
   };
 
   const saveChanges = async (event) => {
@@ -85,6 +85,7 @@ const Page = (props) => {
     props.user !== currentUser ? (<p> This is not your page to edit </p>) :
     <div className={className}>
       <Sidebar>
+        <Button variant="transparent" onClick={() => redirect('/')}>Home</Button>
         <Button variant="transparent" onClick={() => setTextModalOpen(true)}>Add Text</Button>
         <Button variant="transparent">Upload Photo</Button>
         <Button
@@ -102,7 +103,8 @@ const Page = (props) => {
             Save Changes
           </Button> : null
         }
-        <Button variant="transparent" onClick={() => redirect()}>Live Page</Button>
+        <Button variant="transparent" onClick={() => redirect(`/users/${user}/pages/${id}`)}>Live Page</Button>
+        <Button variant="transparent" onClick={() => redirect('/logout')}>Logout</Button>
       </Sidebar>
       <Modal visible={textModalOpen} setVisible={setTextModalOpen}>
         <CreateText visible={textModalOpen} setVisible={setTextModalOpen} user={user}/>

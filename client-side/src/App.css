@@ -1,12 +1,20 @@
 html, body { height: 100% }
 
+html {
+  cursor: url('cursor.svg'), auto;
+}
+
 body {
-  font-family: Helvetica, Arial, sans-serif;
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(119,51,128,1) 0%, rgba(58,133,193,1) 100%, rgba(0,212,255,1) 100%);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
   margin: 0 !important;
   padding: 0 !important;
 }
 
 a {
+  cursor: url('cursor.svg'), auto;
   text-decoration: none;
 }
 
@@ -14,6 +22,21 @@ ul {
   list-style: none;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border:none !important;
+  -webkit-text-fill-color: inherit !important;
+  -webkit-box-shadow: 0 0 0px 1000px #FFFFFF inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
 .submissions {
   padding-top: 30px;
   /* grid-column-start: 1;
@@ -293,4 +316,18 @@ ul {
   position: absolute;
   bottom: 0;
   width: 20px;
+}
+
+.utility-buttons {
+  position: fixed;
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+
+.utility-buttons button {
+  padding: 1px;
+}
+
+.home-button {
+  transform: scale(0.4)
 }
