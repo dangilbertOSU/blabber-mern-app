@@ -1,5 +1,6 @@
 import Draggable from 'react-draggable';
 import React, { Component } from 'react';
+import { Resizable } from 're-resizable';
 import { getPosition, getHeight, getWidth } from './getFunctions.js';
 
 import './sandbox.css';
@@ -129,13 +130,16 @@ export default class Sandbox extends Component {
           onStop={(event) => this.handleStop(event, component)}
           key={index}
         >
-          <div
+
+          <Resizable
             className='submissions_post_edit_mode'
-            style={{ width: size.width, height: size.height }}
+            defaultSize={{ width: size.width, height: size.height }}
+            onResizeStop={(event) => this.handleStop(event, component)}
           >
             <span className='edit-move-handle'></span>
             <p>{text.value}</p>
-          </div>
+          </Resizable>
+
         </Draggable>
       );
     } else {
