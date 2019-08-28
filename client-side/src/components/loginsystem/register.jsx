@@ -30,7 +30,7 @@ export const Login = (props) => {
           body: JSON.stringify(user), // body data type must match 'Content-Type' header
         }).then(res => {
           if (res.status === 200) {
-            props.history.push('/login');
+            props.setFlipped(!props.flipped);
           } else {
             const error = new Error(res.error);
             throw error;

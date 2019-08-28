@@ -35,7 +35,6 @@ export const Login = (props) => {
         if (res.status === 200) {
           setUserName(username);
           window.location.href = '/';
-          props.history.push('/');
         } else {
           const error = new Error(res.error);
           throw error;
