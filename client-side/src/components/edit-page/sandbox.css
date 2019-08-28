@@ -4,5 +4,6 @@
   margin-bottom: 2rem;
   margin-left: 5%;
   margin-right: 5%;
+  position: relative;
   height: 100vh;
 }
