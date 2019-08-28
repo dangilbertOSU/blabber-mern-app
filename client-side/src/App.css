@@ -37,13 +37,6 @@ select:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0px 1000px #FFFFFF inset;
   transition: background-color 5000s ease-in-out 0s;
 }
-.submissions {
-  /* grid-column-start: 1;
-  grid-column-end: 6;
-  grid-row-start: 6;
-  display: flex;
-  flex-direction: column-reverse; */
-}
 
 .submissions_post {
   position: relative;
@@ -55,10 +48,10 @@ select:-webkit-autofill:focus {
 }
 
 .submissions_post_edit_mode {
-  border: 1px solid gray;
-  overflow: auto;
+  /* overflow: auto; */
+  outline: 1px solid black;
   position: relative;
-  resize: both;
+  /* resize: both; */
   transform: translateY(50px);
   transition: all 0.2s ease-out;
   white-space: pre-line;
