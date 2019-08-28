@@ -5,7 +5,10 @@ a {
 .form {
   background-color: white;
   border-radius: 1rem;
+  box-shadow: 10px 10px 65px -25px rgba(0,0,0,0.75);
   padding: 2rem;
+  -webkit-box-shadow: 10px 10px 65px -25px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 65px -25px rgba(0,0,0,0.75);
 }
 
 .logout a {
