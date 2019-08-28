@@ -5,8 +5,8 @@ a {
 .button {
   border-radius: 1rem;
   cursor: url('../../cursor.svg'), auto;
-  font-size: 0.8rem;
-  font-weight: lighter;
+  font-size: 1rem;
+  font-weight: 200;
   padding: 0.4rem;
   transition: all 0.2s;
   width: 100%;
