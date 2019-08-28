@@ -48,6 +48,11 @@ export const Login = (props) => {
     }
   };
 
+  const handleClick = (e) => {
+    e.preventDefault();
+    props.setFlipped(!props.flipped);
+  };
+
   return (
     <div className="form">
       <form onSubmit={ handleSubmit }>
@@ -74,7 +79,7 @@ export const Login = (props) => {
         <br/>
         <section>
           <Button type="submit" variant="primary">login</Button>
-          <p>Don't have an account? <a href="/register">click here to register</a></p>
+          <p>Don't have an account? <a onClick={(e) => handleClick(e)}>click here to register</a></p>
           <br/>
         </section>
       </form>

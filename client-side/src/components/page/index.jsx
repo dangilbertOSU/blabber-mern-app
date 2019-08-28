@@ -2,11 +2,10 @@ import Button from '../button/index';
 import CommentSection from '../comment-section/index';
 import Draggable from 'react-draggable';
 import React, { useEffect, useState } from 'react';
+import Sidebar from '../side-bar/index';
 import Spinner from '../spinner/index';
 
 import './page.css';
-
-import { ReactComponent as Home } from '../../house.svg';
 
 const Page = (props) => {
   const {
@@ -53,6 +52,14 @@ const Page = (props) => {
       errorMessage ? <p>{errorMessage}</p> :
       loaded ? (
         <React.Fragment>
+        <Sidebar>
+          <Button
+            variant="transparent"
+            onClick={() => handleHomeClick()}
+          >
+            Home
+          </Button>
+        </Sidebar>
         <div className={className} {...rest}>
           {
             page.contents.map((component, index) => {

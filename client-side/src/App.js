@@ -1,8 +1,8 @@
 import './App.css';
 import Container from './components/container/index';
 import EditPage from './components/edit-page/index';
+import Flipper from './components/loginsystem/flipper';
 import FourOhFour from './components/404/index';
-import Header from './components/header/index';
 import Login from './components/loginsystem/login';
 import Logout from './components/loginsystem/logout';
 import Register from './components/loginsystem/register';
@@ -42,9 +42,9 @@ const App = (props) => {
         <Route path="/users/:username/pages/:pageid" component={() => <Page user={currentUser}/>}/>
         <Route path="/users/:username/editpage/:pageid" component={withAuth(EditPage)}/>
         <Route path="/" exact component={withAuth(Main)} />
-        <Route path="/login" component={Login} />
+        <Route path="/login" component={Flipper} />
         <Route path="/logout" component={withAuth(Logout)} />
-        <Route path="/register" component={Register} />
+        <Route path="/register" component={Flipper} />
         <Route path="/users/:username" component={UserPage}/>
         <Route component={FourOhFour}/>
       </Switch>
