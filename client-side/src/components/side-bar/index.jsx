@@ -8,11 +8,9 @@ const Sidebar = (props) => {
     ...rest
   } = props;
 
-  const [expanded, setExpanded] = useState(false);
-
   return (
-    <div className={expanded ? 'sidebar expanded' : 'sidebar'} {...rest}>
-      <div className={expanded ? 'content dissolve' : 'content'}>
+    <div className="sidebar" {...rest}>
+      <div className="content">
         {children}
       </div>
     </div>

@@ -35,10 +35,6 @@ const App = (props) => {
       });
   }, []);
 
-  const handleHomeClick = () => {
-    window.location.href = '/';
-  };
-
   return (
     <BrowserRouter>
       <Container>

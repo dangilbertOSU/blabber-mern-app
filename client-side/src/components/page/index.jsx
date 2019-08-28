@@ -1,7 +1,12 @@
+import Button from '../button/index';
 import CommentSection from '../comment-section/index';
 import Draggable from 'react-draggable';
 import React, { useEffect, useState } from 'react';
 import Spinner from '../spinner/index';
+
+import './page.css';
+
+import { ReactComponent as Home } from '../../house.svg';
 
 const Page = (props) => {
   const {
@@ -28,6 +33,10 @@ const Page = (props) => {
     return body;
   };
 
+  const handleHomeClick = () => {
+    window.location.href = '/';
+  };
+
   useEffect(() => {
     callBackendAPI()
       .then(res => {
@@ -43,6 +52,7 @@ const Page = (props) => {
   return (
       errorMessage ? <p>{errorMessage}</p> :
       loaded ? (
+        <React.Fragment>
         <div className={className} {...rest}>
           {
             page.contents.map((component, index) => {
@@ -62,14 +72,15 @@ const Page = (props) => {
               );
             })
           }
-          <CommentSection id={id} page={page} user={user}/>
         </div>
+        <CommentSection id={id} page={page} user={user}/>
+        </React.Fragment>
       ) : (<Spinner/>)
   );
 };
 
 Page.defaultProps = {
-  className: 'page',
+  className: 'page-content',
 };
 
 export default Page;

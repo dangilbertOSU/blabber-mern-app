@@ -1,0 +1,13 @@
+.utility-buttons {
+  position: fixed;
+  margin-top: -1rem;
+  margin-left: 1rem;
+}
+
+.utility-buttons button {
+  padding: 1px;
+}
+
+.home-button {
+  transform: scale(0.4)
+}

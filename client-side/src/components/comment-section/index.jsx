@@ -66,6 +66,7 @@ const CommentSection = (props) => {
           secondPlaceHolder="add comment here..."
           handleSubmit={(event) => handleSubmit(event)}
         />
+        <hr/>
         <div className="comment-section-comments" ref={scroll}>
           <p>Comments: {page.comments.length}</p>
           {
