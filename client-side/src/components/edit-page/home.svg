@@ -1,0 +1,10 @@
+<svg width="460px" height="456px" viewBox="0 0 460 456" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round">
+	  <g id="Home" transform="translate(5.000000, 5.000000)" stroke="#FFFFFF" stroke-width="10">
+	      <path d="M225,201 L450,0" id="Line-Copy" transform="translate(337.500000, 100.500000) scale(-1, 1) translate(-337.500000, -100.500000) "></path>
+	      <path d="M0,201 L225,0" id="Line-Copy-2"></path>
+	      <path d="M230,217 L230,445 C230,445.552285 230.447715,446 231,446 L356.780093,446 C357.332378,446 357.780093,445.552285 357.780093,445 L357.780093,332.254231 C357.780093,326.179098 362.704961,321.254231 368.780093,321.254231 L407,321.254231 L407,321.254231" id="Line-2-Copy" transform="translate(318.500000, 331.500000) scale(-1, 1) translate(-318.500000, -331.500000) "></path>
+	      <path d="M53,217 L53,445 C53,445.552285 53.4477153,446 54,446 L179.780093,446 C180.332378,446 180.780093,445.552285 180.780093,445 L180.780093,332.254231 C180.780093,326.179098 185.704961,321.254231 191.780093,321.254231 L230,321.254231 L230,321.254231" id="Line-2-Copy-2"></path>
+	  </g>
+  </g>
+</svg>

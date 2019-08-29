@@ -23,7 +23,6 @@ const secret = 'allyouneedisfudge';
 let Token = require('./token.model.js');
 
 app.get('/logout', (req, res) => {
-  console.log('called');
   const token =
     req.body.token ||
     req.query.token ||
@@ -89,6 +88,9 @@ require('./server-modules/handle-remove-post.js')(app);
 
 // Upload photo
 require('./server-modules/handle-upload-photo.js')(app);
+
+// Deletes expired tokens from database
+require('./server-modules/handle-token-deletion.js')(app);
 
 // handle * pages
 let pathName = path.join(__dirname, './client-side/build', 'index.html');

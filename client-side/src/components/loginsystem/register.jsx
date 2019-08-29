@@ -37,7 +37,7 @@ export const Login = (props) => {
           }
         })
         .catch(err => {
-          console.log(err);
+          console.log('error');
           alert('Error registering, please try again');
         });
     }

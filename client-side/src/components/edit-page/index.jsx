@@ -6,6 +6,8 @@ import Sandbox from './Sandbox.jsx';
 import Sidebar from '../side-bar/index';
 import Spinner from '../spinner/index';
 
+// import { ReactComponent as Home } from './home.svg';
+
 const Page = (props) => {
   const {
     className,

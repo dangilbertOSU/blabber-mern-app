@@ -8,6 +8,7 @@ const Button = (props) => {
     href,
     onClick,
     variant,
+    value,
     ...rest
   } = props;
 
@@ -21,6 +22,7 @@ const Button = (props) => {
       href={href}
       onClick={onClick}
       variant={variant}
+      value={value}
       {...rest}
     >
       {children}

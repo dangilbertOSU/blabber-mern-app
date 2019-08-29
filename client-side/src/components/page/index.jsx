@@ -56,6 +56,7 @@ const Page = (props) => {
           <Button
             variant="transparent"
             onClick={() => handleHomeClick()}
+            value="Home"
           >
             Home
           </Button>

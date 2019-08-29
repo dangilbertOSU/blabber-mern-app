@@ -13,7 +13,7 @@ handleRegister = (app) => {
         res.status(500)
           .send('Error registering new user please try again.');
       } else {
-        post.save((err) => err ? console.log(err) : null);
+        post.save((err) => {if (err) console.log(err);});
         res.status(200).send('Registered');
       }
     });

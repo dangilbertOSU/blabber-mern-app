@@ -8,8 +8,16 @@ a {
   font-size: 1rem;
   font-weight: 200;
   padding: 0.4rem;
+  position: relative;
   transition: all 0.2s;
   width: 100%;
+}
+
+.button:hover::after {
+  background-color: black;
+  color: white;
+  content: attr(value);
+  position: absolute;
 }
 
 .primary {
