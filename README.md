@@ -16,3 +16,6 @@ Wait for the build to finish and then move back a directory to the server
 then run nodemon
 
 ```nodemon```
+
+## Mobile Login Page
+![mobile home page](https://i.imgur.com/28qSExD.png)
